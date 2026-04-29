@@ -149,90 +149,92 @@
                     <a href="#about" class="text-gray-700 hover:text-purple-600 transition">Acerca de</a>
                     <a href="index.html" class="text-purple-600 hover:text-purple-700 transition font-semibold">English</a>
                 </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Inicio</a>
-                <a href="#chakras" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Los 7 Chakras</a>
-                <a href="#balance" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Equilibrio</a>
-                <a href="#meditation" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Meditación</a>
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Acerca de</a>
-                <a href="index.html" class="block px-3 py-2 text-purple-600 font-semibold">English</a>
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+            <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Inicio</a>
+            <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Los 7 Chakras</a>
+            <a href="#balance" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Equilibrio</a>
+            <a href="#meditation" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Meditación</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Acerca de</a>
+            <a href="index.html" onclick="toggleMobileMenu()" class="text-purple-600 hover:text-purple-700 font-semibold">English</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-12 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h1 class="heading-font text-5xl md:text-6xl font-bold text-gray-800 mb-6">
-                    Enciclopedia de Chakras
-                </h1>
-                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    Descubre el poder transformador de los 7 chakras. Guía completa para equilibrar tu energía espiritual y alcanzar el bienestar holístico.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#chakras" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition transform hover:scale-105">
-                        <i class="fas fa-play mr-2"></i> Comenzar Viaje
-                    </a>
-                    <a href="#balance" class="bg-white text-purple-600 border-2 border-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition transform hover:scale-105">
-                        <i class="fas fa-heart mr-2"></i> Test de Chakras
-                    </a>
-                </div>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 chakra-gradient opacity-10"></div>
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 mb-6">
+                Descubre Tus <span class="chakra-gradient bg-clip-text text-transparent">Centros de Energía</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                Explora la sabiduría antigua de los 7 chakras y desbloquea tu potencial espiritual
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#chakras" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition transform hover:scale-105">
+                    Explorar Chakras
+                </a>
+                <button onclick="startChakraTest()" class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition transform hover:scale-105">
+                    Tomar Test de Chakras
+                </button>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="heading-font text-3xl font-bold text-gray-800 mb-6">¿Qué son los Chakras?</h2>
-                    <p class="text-gray-600 mb-6">
-                        Los chakras son centros de energía que gobiernan funciones específicas del cuerpo y la mente. Cuando están equilibrados, promueven el bienestar físico, emocional y espiritual.
-                    </p>
-                    <p class="text-gray-600 mb-6">
-                        Cada chakra irradia un color y energía específicos, coincidiendo con glándulas en el cuerpo físico. Cuando están equilibrados, apoyan nuestro bienestar físico, emocional, psicológico y espiritual.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span class="text-gray-700">7 Centros de Energía Principales</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span class="text-gray-700">Colores y Símbolos Únicos</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span class="text-gray-700">Conexión Mente-Cuerpo</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span class="text-gray-700">Crecimiento Espiritual</span>
-                        </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-gray-400 text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-6">¿Qué son los Chakras?</h2>
+                <p class="text-gray-600 mb-4">
+                    Los chakras son centros de energía que gobiernan funciones específicas del cuerpo y la mente. Cuando están equilibrados, promueven el bienestar físico, emocional y espiritual.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Cada chakra irradia un color y energía específicos, coincidiendo con glándulas en el cuerpo físico. Cuando están equilibrados, apoyan nuestro bienestar físico, emocional, psicológico y espiritual.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700">7 Centros de Energía</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700">Colores y Símbolos Únicos</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700">Conexión Mente-Cuerpo</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700">Crecimiento Espiritual</span>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="chakra-gradient w-full h-96 rounded-full opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="relative z-10 flex items-center justify-center h-96">
-                        <div class="chakra-symbol">
-                            <svg width="300" height="300" viewBox="0 0 300 300">
-                                <!-- Chakra symbols will be added here -->
-                                <circle cx="150" cy="150" r="140" fill="none" stroke="url(#gradient)" stroke-width="2" opacity="0.3"/>
-                                <defs>
-                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#8B00FF;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
+            </div>
+            <div class="relative">
+                <div class="chakra-gradient w-full h-96 rounded-full opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative z-10 flex items-center justify-center h-96">
+                    <div class="chakra-symbol">
+                        <svg width="300" height="300" viewBox="0 0 300 300">
+                            <circle cx="150" cy="150" r="140" fill="none" stroke="url(#gradient)" stroke-width="2" opacity="0.3"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#8B00FF;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -425,6 +427,31 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Chakra test function
+        function startChakraTest() {
+            alert('Test de Chakras coming soon!');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

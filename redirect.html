@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chakra Encyclopedia - Language Detection</title>
+    <script>
+        // Detect user's browser language
+        var userLang = navigator.language || navigator.userLanguage;
+        
+        // Check if user prefers Spanish
+        if (userLang.startsWith('es')) {
+            // Redirect to Spanish version
+            window.location.href = 'index-es.html';
+        } else {
+            // Default to English
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to your language...</p>
+</body>
+</html>
