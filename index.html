@@ -1093,30 +1093,38 @@
 
         // Chakra test function
         function startChakraTest() {
-            console.log('Chakra test started');
-            const testStart = document.getElementById('testStart');
-            const testQuestions = document.getElementById('testQuestions');
-            
-            if (!testStart || !testQuestions) {
-                console.error('Test elements not found');
-                alert('Test elements not found - please refresh the page');
-                return;
+            try {
+                console.log('Chakra test started');
+                const testStart = document.getElementById('testStart');
+                const testQuestions = document.getElementById('testQuestions');
+                
+                console.log('testStart element:', testStart);
+                console.log('testQuestions element:', testQuestions);
+                
+                if (!testStart || !testQuestions) {
+                    console.error('Test elements not found');
+                    alert('Test elements not found - please refresh the page');
+                    return;
+                }
+                
+                console.log('Before hiding - testStart classes:', testStart.className);
+                console.log('Before showing - testQuestions classes:', testQuestions.className);
+                
+                testStart.classList.add('hidden');
+                testQuestions.classList.remove('hidden');
+                
+                console.log('After hiding - testStart classes:', testStart.className);
+                console.log('After showing - testQuestions classes:', testQuestions.className);
+                console.log('testQuestions display style:', window.getComputedStyle(testQuestions).display);
+                console.log('testQuestions visibility style:', window.getComputedStyle(testQuestions).visibility);
+                
+                currentQuestionIndex = 0;
+                userAnswers = {};
+                showQuestion();
+            } catch (error) {
+                console.error('Error in startChakraTest:', error);
+                alert('Error starting test: ' + error.message);
             }
-            
-            console.log('Before hiding - testStart classes:', testStart.className);
-            console.log('Before showing - testQuestions classes:', testQuestions.className);
-            
-            testStart.classList.add('hidden');
-            testQuestions.classList.remove('hidden');
-            
-            console.log('After hiding - testStart classes:', testStart.className);
-            console.log('After showing - testQuestions classes:', testQuestions.className);
-            console.log('testQuestions display style:', window.getComputedStyle(testQuestions).display);
-            console.log('testQuestions visibility style:', window.getComputedStyle(testQuestions).visibility);
-            
-            currentQuestionIndex = 0;
-            userAnswers = {};
-            showQuestion();
         }
 
         function showQuestion() {
