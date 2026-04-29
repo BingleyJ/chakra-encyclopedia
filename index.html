@@ -1093,8 +1093,18 @@
 
         // Chakra test function
         function startChakraTest() {
-            document.getElementById('testStart').classList.add('hidden');
-            document.getElementById('testQuestions').classList.remove('hidden');
+            console.log('Chakra test started');
+            const testStart = document.getElementById('testStart');
+            const testQuestions = document.getElementById('testQuestions');
+            
+            if (!testStart || !testQuestions) {
+                console.error('Test elements not found');
+                alert('Test elements not found - please refresh the page');
+                return;
+            }
+            
+            testStart.classList.add('hidden');
+            testQuestions.classList.remove('hidden');
             currentQuestionIndex = 0;
             userAnswers = {};
             showQuestion();
