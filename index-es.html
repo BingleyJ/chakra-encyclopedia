@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,23 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f0f0f',
+                            card: '#1a1a1a',
+                            text: '#e0e0e0',
+                            border: '#2a2a2a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -119,7 +136,7 @@
         .crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
     <!-- Header Ad Banner -->
     <div class="w-full bg-gray-100 py-2 text-center">
         <ins class="adsbygoogle"
@@ -134,20 +151,23 @@
     </div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="chakra-gradient w-8 h-8 rounded-full mr-3"></div>
-                    <h1 class="heading-font text-xl font-bold text-gray-800">Enciclopedia de Chakras</h1>
+                    <h1 class="heading-font text-xl font-bold text-gray-800 dark:text-dark-text">Enciclopedia de Chakras</h1>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition">Inicio</a>
-                    <a href="#chakras" class="text-gray-700 hover:text-purple-600 transition">Los 7 Chakras</a>
-                    <a href="#balance" class="text-gray-700 hover:text-purple-600 transition">Equilibrio</a>
-                    <a href="#meditation" class="text-gray-700 hover:text-purple-600 transition">Meditación</a>
-                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition">Acerca de</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Inicio</a>
+                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Los 7 Chakras</a>
+                    <a href="#balance" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Equilibrio</a>
+                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Meditación</a>
+                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Acerca de</a>
                     <a href="index.html" class="text-purple-600 hover:text-purple-700 transition font-semibold">English</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition ml-4">
+                        <i id="themeIcon" class="fas fa-moon text-xl"></i>
+                    </button>
                 </div>
                 <button class="md:hidden" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-gray-700"></i>
@@ -157,14 +177,17 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 hidden">
+    <div id="mobileMenu" class="fixed inset-0 bg-white dark:bg-dark-card z-40 hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
-            <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Inicio</a>
-            <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Los 7 Chakras</a>
-            <a href="#balance" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Equilibrio</a>
-            <a href="#meditation" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Meditación</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Acerca de</a>
+            <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Inicio</a>
+            <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Los 7 Chakras</a>
+            <a href="#balance" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Equilibrio</a>
+            <a href="#meditation" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Meditación</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Acerca de</a>
             <a href="index.html" onclick="toggleMobileMenu()" class="text-purple-600 hover:text-purple-700 font-semibold">English</a>
+            <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">
+                <i id="mobileThemeIcon" class="fas fa-moon text-xl"></i>
+            </button>
         </div>
     </div>
 
@@ -172,10 +195,10 @@
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 chakra-gradient opacity-10"></div>
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 mb-6">
+            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 dark:text-dark-text mb-6">
                 Descubre Tus <span class="chakra-gradient bg-clip-text text-transparent">Centros de Energía</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-8">
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
                 Explora la sabiduría antigua de los 7 chakras y desbloquea tu potencial espiritual
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -196,29 +219,29 @@
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-6">¿Qué son los Chakras?</h2>
-                <p class="text-gray-600 mb-4">
+                <h2 class="heading-font text-4xl font-bold text-gray-800 dark:text-dark-text mb-6">¿Qué son los Chakras?</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
                     Los chakras son centros de energía que gobiernan funciones específicas del cuerpo y la mente. Cuando están equilibrados, promueven el bienestar físico, emocional y espiritual.
                 </p>
-                <p class="text-gray-600 mb-6">
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
                     Cada chakra irradia un color y energía específicos, coincidiendo con glándulas en el cuerpo físico. Cuando están equilibrados, apoyan nuestro bienestar físico, emocional, psicológico y espiritual.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">7 Centros de Energía</span>
+                        <span class="text-gray-700 dark:text-dark-text">7 Centros de Energía</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Colores y Símbolos Únicos</span>
+                        <span class="text-gray-700 dark:text-dark-text">Colores y Símbolos Únicos</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Conexión Mente-Cuerpo</span>
+                        <span class="text-gray-700 dark:text-dark-text">Conexión Mente-Cuerpo</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Crecimiento Espiritual</span>
+                        <span class="text-gray-700 dark:text-dark-text">Crecimiento Espiritual</span>
                     </div>
                 </div>
             </div>
@@ -428,6 +451,39 @@
 
     <!-- JavaScript -->
     <script>
+        // Dark mode functionality
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        // Initialize dark mode based on system preference or saved preference
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+                if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        })();
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');

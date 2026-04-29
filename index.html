@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,23 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f0f0f',
+                            card: '#1a1a1a',
+                            text: '#e0e0e0',
+                            border: '#2a2a2a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -119,7 +136,7 @@
         .crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
     <!-- Header Ad Banner -->
     <div class="w-full bg-gray-100 py-2 text-center">
         <ins class="adsbygoogle"
@@ -134,20 +151,23 @@
     </div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="chakra-gradient w-8 h-8 rounded-full mr-3"></div>
-                    <h1 class="heading-font text-xl font-bold text-gray-800">Chakra Encyclopedia</h1>
+                    <h1 class="heading-font text-xl font-bold text-gray-800 dark:text-dark-text">Chakra Encyclopedia</h1>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition">Home</a>
-                    <a href="#chakras" class="text-gray-700 hover:text-purple-600 transition">The 7 Chakras</a>
-                    <a href="#balance" class="text-gray-700 hover:text-purple-600 transition">Balance</a>
-                    <a href="#meditation" class="text-gray-700 hover:text-purple-600 transition">Meditation</a>
-                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition">About</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Home</a>
+                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">The 7 Chakras</a>
+                    <a href="#balance" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Balance</a>
+                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Meditation</a>
+                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">About</a>
                     <a href="index-es.html" class="text-purple-600 hover:text-purple-700 transition font-semibold">Español</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition ml-4">
+                        <i id="themeIcon" class="fas fa-moon text-xl"></i>
+                    </button>
                 </div>
                 <button class="md:hidden" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-gray-700"></i>
@@ -157,14 +177,17 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 hidden">
+    <div id="mobileMenu" class="fixed inset-0 bg-white dark:bg-dark-card z-40 hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
-            <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Home</a>
-            <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">The 7 Chakras</a>
-            <a href="#balance" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Balance</a>
-            <a href="#meditation" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">Meditation</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-purple-600">About</a>
+            <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Home</a>
+            <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">The 7 Chakras</a>
+            <a href="#balance" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Balance</a>
+            <a href="#meditation" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Meditation</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">About</a>
             <a href="index-es.html" onclick="toggleMobileMenu()" class="text-purple-600 hover:text-purple-700 font-semibold">Español</a>
+            <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">
+                <i id="mobileThemeIcon" class="fas fa-moon text-xl"></i>
+            </button>
         </div>
     </div>
 
@@ -172,10 +195,10 @@
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 chakra-gradient opacity-10"></div>
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 mb-6">
+            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 dark:text-dark-text mb-6">
                 Discover Your <span class="chakra-gradient bg-clip-text text-transparent">Energy Centers</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-8">
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
                 Explore the ancient wisdom of the 7 chakras and unlock your spiritual potential
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -196,29 +219,29 @@
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-6">What Are Chakras?</h2>
-                <p class="text-gray-600 mb-4">
-                    Chakras are the energy centers of the body, located in the astral body along the spine, starting at its base and running upwards to the crown of the head. These invisible yet powerful centers regulate the flow of prana (life force energy) throughout our being.
+                <h2 class="heading-font text-4xl font-bold text-gray-800 dark:text-dark-text mb-6">What Are Chakras?</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Chakras are energy centers that govern specific functions of the body and mind. When balanced, they promote physical, emotional, and spiritual well-being.
                 </p>
-                <p class="text-gray-600 mb-6">
-                    Each chakra radiates a specific color and energy, coinciding with glands in the physical body. When balanced, they support our physical, emotional, psychological, and spiritual well-being.
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    Each chakra radiates a specific color and energy, corresponding to glands in the physical body. When balanced, they support our physical, emotional, psychological, and spiritual well-being.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">7 Main Energy Centers</span>
+                        <span class="text-gray-700 dark:text-dark-text">7 Main Energy Centers</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Unique Colors & Symbols</span>
+                        <span class="text-gray-700 dark:text-dark-text">Unique Colors & Symbols</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Mind-Body Connection</span>
+                        <span class="text-gray-700 dark:text-dark-text">Mind-Body Connection</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                        <span class="text-gray-700">Spiritual Growth</span>
+                        <span class="text-gray-700 dark:text-dark-text">Spiritual Growth</span>
                     </div>
                 </div>
             </div>
@@ -243,18 +266,18 @@
     </section>
 
     <!-- The 7 Chakras Section -->
-    <section id="chakras" class="py-20 bg-gray-100">
+    <section id="chakras" class="py-20 bg-gray-100 dark:bg-dark-card">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">The 7 Chakras</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 dark:text-dark-text mb-4">The 7 Chakras</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                     Journey through the seven main energy centers, from the foundational root to the divine crown
                 </p>
             </div>
 
             <div class="space-y-12">
                 <!-- Root Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -268,16 +291,16 @@
                         <div class="md:w-2/3 p-8">
                             <div class="flex items-center mb-4">
                                 <div class="w-4 h-4 bg-red-500 rounded-full mr-3"></div>
-                                <span class="text-sm font-semibold text-gray-500">CHAKRA 1</span>
+                                <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">CHAKRA 1</span>
                             </div>
-                            <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Root Chakra (Muladhara)</h3>
-                            <p class="text-gray-600 mb-6">
+                            <h3 class="heading-font text-3xl font-bold text-gray-800 dark:text-dark-text mb-4">Root Chakra (Muladhara)</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
                                 The foundation of the chakra system, promoting stability, grounding, and security. Located at the base of the spine, it connects you to your roots and serves as the base for energy supply to all other chakras.
                             </p>
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <h4 class="font-semibold text-gray-800 mb-2">Attributes:</h4>
-                                    <ul class="space-y-1 text-gray-600">
+                                    <h4 class="font-semibold text-gray-800 dark:text-dark-text mb-2">Attributes:</h4>
+                                    <ul class="space-y-1 text-gray-600 dark:text-gray-300">
                                         <li>Color: Red</li>
                                         <li>Element: Earth</li>
                                         <li>Mantra: Lam</li>
@@ -285,8 +308,8 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800 mb-2">When Balanced:</h4>
-                                    <ul class="space-y-1 text-gray-600">
+                                    <h4 class="font-semibold text-gray-800 dark:text-dark-text mb-2">When Balanced:</h4>
+                                    <ul class="space-y-1 text-gray-600 dark:text-gray-300">
                                         <li>Feeling grounded and secure</li>
                                         <li>Physical health and vitality</li>
                                         <li>Financial stability</li>
@@ -299,7 +322,7 @@
                 </div>
 
                 <!-- Sacral Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -344,7 +367,7 @@
                 </div>
 
                 <!-- Solar Plexus Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -389,7 +412,7 @@
                 </div>
 
                 <!-- Heart Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -434,7 +457,7 @@
                 </div>
 
                 <!-- Throat Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -479,7 +502,7 @@
                 </div>
 
                 <!-- Third Eye Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -524,7 +547,7 @@
                 </div>
 
                 <!-- Crown Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -598,16 +621,16 @@
 
             <div id="chakraTestContainer" class="max-w-4xl mx-auto">
                 <!-- Test Start -->
-                <div id="testStart" class="bg-white rounded-2xl shadow-lg p-8">
+                <div id="testStart" class="bg-white dark:bg-dark-card rounded-2xl shadow-lg p-8">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-brain text-purple-600 text-3xl"></i>
+                        <div class="w-20 h-20 mx-auto mb-6 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+                            <i class="fas fa-brain text-purple-600 dark:text-purple-400 text-3xl"></i>
                         </div>
-                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Discover Your Energy Profile</h3>
-                        <p class="text-gray-600 mb-8">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 dark:text-dark-text mb-4">Discover Your Energy Profile</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8">
                             This 21-question assessment combines psychological science with metaphysical wisdom to evaluate your chakra balance.
                         </p>
-                        <div class="grid md:grid-cols-3 gap-4 mb-8 text-sm text-gray-600">
+                        <div class="grid md:grid-cols-3 gap-4 mb-8 text-sm text-gray-600 dark:text-gray-300">
                             <div class="flex items-center">
                                 <i class="fas fa-microscope text-purple-500 mr-2"></i>
                                 <span>Science-Based Questions</span>
@@ -629,21 +652,21 @@
 
                 <!-- Test Questions -->
                 <div id="testQuestions" class="hidden">
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="bg-white dark:bg-dark-card rounded-2xl shadow-lg p-8">
                         <!-- Progress Bar -->
                         <div class="mb-8">
-                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                            <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-2">
                                 <span>Question <span id="currentQuestion">1</span> of 21</span>
                                 <span id="progressPercent">5%</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="w-full bg-gray-200 dark:bg-dark-border rounded-full h-2">
                                 <div id="progressBar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 5%"></div>
                             </div>
                         </div>
 
                         <!-- Question -->
                         <div id="questionContainer" class="text-center">
-                            <h3 id="questionText" class="heading-font text-2xl font-bold text-gray-800 mb-8"></h3>
+                            <h3 id="questionText" class="heading-font text-2xl font-bold text-gray-800 dark:text-dark-text mb-8"></h3>
                             <div id="answerOptions" class="space-y-4"></div>
                         </div>
                     </div>
@@ -651,19 +674,19 @@
 
                 <!-- Test Results -->
                 <div id="testResults" class="hidden">
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="bg-white dark:bg-dark-card rounded-2xl shadow-lg p-8">
                         <div class="text-center mb-8">
-                            <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Your Energy Profile</h3>
-                            <p class="text-gray-600">Based on your responses, here's your chakra balance analysis</p>
+                            <h3 class="heading-font text-3xl font-bold text-gray-800 dark:text-dark-text mb-4">Your Energy Profile</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Based on your responses, here's your chakra balance analysis</p>
                         </div>
 
                         <!-- Chakra Results -->
                         <div id="chakraResults" class="space-y-6 mb-8"></div>
 
                         <!-- Recommendations -->
-                        <div class="bg-purple-50 rounded-xl p-6">
-                            <h4 class="heading-font text-xl font-bold text-gray-800 mb-4">Personalized Recommendations</h4>
-                            <div id="recommendations" class="space-y-3 text-gray-700"></div>
+                        <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6">
+                            <h4 class="heading-font text-xl font-bold text-gray-800 dark:text-dark-text mb-4">Personalized Recommendations</h4>
+                            <div id="recommendations" class="space-y-3 text-gray-700 dark:text-gray-300"></div>
                         </div>
 
                         <div class="text-center mt-8">
@@ -917,6 +940,39 @@
             }
         })();
 
+        // Dark mode functionality
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        // Initialize dark mode based on system preference or saved preference
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+                if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        })();
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1057,10 +1113,10 @@
             
             question.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                button.className = 'w-full text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-400 hover:bg-purple-50 transition text-gray-700';
+                button.className = 'w-full text-left p-4 rounded-lg border-2 border-gray-200 dark:border-dark-border hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition text-gray-700 dark:text-dark-text';
                 button.innerHTML = `
                     <div class="flex items-center">
-                        <span class="w-8 h-8 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center">
+                        <span class="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-dark-border mr-4 flex items-center justify-center">
                             <span class="text-sm font-semibold">${String.fromCharCode(65 + index)}</span>
                         </span>
                         <span>${option}</span>
@@ -1119,7 +1175,7 @@
                 const statusColor = score >= 80 ? 'text-green-600' : score >= 60 ? 'text-yellow-600' : 'text-red-600';
                 
                 const resultDiv = document.createElement('div');
-                resultDiv.className = 'bg-gray-50 rounded-lg p-6';
+                resultDiv.className = 'bg-gray-50 dark:bg-dark-card rounded-lg p-6';
                 resultDiv.innerHTML = `
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center">
@@ -1127,13 +1183,13 @@
                                 <i class="fas ${info.icon}" style="color: ${info.color};"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800">${info.name}</h4>
+                                <h4 class="font-semibold text-gray-800 dark:text-dark-text">${info.name}</h4>
                                 <span class="text-sm ${statusColor}">${status}</span>
                             </div>
                         </div>
                         <span class="text-2xl font-bold" style="color: ${info.color};">${score}%</span>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="w-full bg-gray-200 dark:bg-dark-border rounded-full h-3">
                         <div class="h-3 rounded-full transition-all duration-500" style="background: ${info.color}; width: ${score}%;"></div>
                     </div>
                 `;
