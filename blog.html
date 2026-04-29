@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chakra Blog - Expert Articles & Guides</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .blog-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 mr-3"></div>
+                    <h1 class="text-xl font-bold text-gray-800">Chakra Encyclopedia</h1>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
+                    <a href="affiliate-products.html" class="text-gray-700 hover:text-purple-600">Products</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-purple-600">Blog</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Chakra Wisdom Blog</h1>
+            <p class="text-xl text-gray-600">Expert insights, meditation techniques, and spiritual healing guidance</p>
+        </div>
+
+        <!-- Featured Article -->
+        <section class="mb-16">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <div class="h-64 bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center">
+                            <i class="fas fa-star text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Featured</span>
+                            <span class="text-gray-500 text-sm ml-3">5 min read</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">7 Signs Your Chakras Need Immediate Attention</h2>
+                        <p class="text-gray-600 mb-6">Learn to recognize the warning signs of chakra imbalances and discover simple techniques to restore harmony to your energy centers.</p>
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/seed/expert/40/40" alt="Author" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <p class="font-semibold">Dr. Sarah Chen</p>
+                                <p class="text-gray-500 text-sm">Energy Healing Expert</p>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700">Read Full Article</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Categories -->
+        <section class="mb-12">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="bg-purple-600 text-white px-4 py-2 rounded-full">All Articles</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300">Root Chakra</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300">Meditation</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300">Crystals</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300">Healing</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300">Yoga</button>
+            </div>
+        </section>
+
+        <!-- Blog Grid -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center">
+                    <i class="fas fa-mountain text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Root Chakra</span>
+                        <span class="text-gray-500 text-sm ml-3">3 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Grounding Techniques for Root Chakra Healing</h3>
+                    <p class="text-gray-600 mb-4">Discover powerful grounding exercises to stabilize your root chakra and build a foundation of security and trust.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author1/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">Maria Rodriguez</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-orange-400 to-yellow-600 flex items-center justify-center">
+                    <i class="fas fa-fire text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Solar Plexus</span>
+                        <span class="text-gray-500 text-sm ml-3">4 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Boost Your Confidence with Solar Plexus Activation</h3>
+                    <p class="text-gray-600 mb-4">Learn specific techniques to strengthen your solar plexus chakra and unlock your personal power and self-esteem.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author2/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">James Wilson</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center">
+                    <i class="fas fa-heart text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Heart Chakra</span>
+                        <span class="text-gray-500 text-sm ml-3">5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Opening Your Heart: Healing Emotional Wounds</h3>
+                    <p class="text-gray-600 mb-4">Explore gentle practices to heal emotional trauma and open your heart chakra to give and receive love freely.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author3/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">Lisa Park</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
+                    <i class="fas fa-microphone text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Throat Chakra</span>
+                        <span class="text-gray-500 text-sm ml-3">3 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Find Your Voice: Throat Chakra Communication</h3>
+                    <p class="text-gray-600 mb-4">Learn to express your truth clearly and authentically with these throat chakra balancing techniques.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author4/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">David Kim</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-eye text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Third Eye</span>
+                        <span class="text-gray-500 text-sm ml-3">6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Develop Your Intuition: Third Eye Awakening</h3>
+                    <p class="text-gray-600 mb-4">Advanced techniques to open your third eye chakra and enhance your psychic abilities and inner wisdom.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author5/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">Amanda Foster</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+                    <i class="fas fa-crown text-white text-4xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Crown Chakra</span>
+                        <span class="text-gray-500 text-sm ml-3">4 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Spiritual Connection: Crown Chakra Enlightenment</h3>
+                    <p class="text-gray-600 mb-4">Journey into higher consciousness with these crown chakra meditation practices for spiritual awakening.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/author6/30/30" alt="Author" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-gray-700 text-sm">Robert Stone</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Read More</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="bg-purple-600 text-white rounded-lg p-8 text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Get Weekly Chakra Wisdom</h2>
+            <p class="text-xl mb-6">Join 10,000+ subscribers receiving weekly meditation tips, healing techniques, and exclusive content</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-l-lg text-gray-800">
+                <button class="bg-purple-800 px-6 py-3 rounded-r-lg hover:bg-purple-900">Subscribe Free</button>
+            </div>
+            <p class="text-sm mt-4 opacity-75">Unsubscribe anytime. No spam, ever.</p>
+        </section>
+
+        <!-- Popular Articles -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Most Popular Articles</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <article class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-start">
+                        <div class="w-24 h-24 bg-gradient-to-br from-red-400 to-pink-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-fire text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">10 Morning Rituals to Balance Your Chakras</h3>
+                            <p class="text-gray-600 mb-3">Start your day with these powerful chakra-balancing practices that will energize and align your energy centers.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-eye mr-2"></i>
+                                <span>15.2k views</span>
+                                <span class="mx-3">·</span>
+                                <i class="fas fa-heart mr-2"></i>
+                                <span>892 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-start">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-gem text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Complete Guide to Crystal Healing for Each Chakra</h3>
+                            <p class="text-gray-600 mb-3">Discover the perfect crystals for each chakra and learn how to use them effectively for healing and balance.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-eye mr-2"></i>
+                                <span>12.8k views</span>
+                                <span class="mx-3">·</span>
+                                <i class="fas fa-heart mr-2"></i>
+                                <span>756 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-start">
+                        <div class="w-24 h-24 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">The Science Behind Chakra Healing</h3>
+                            <p class="text-gray-600 mb-3">Explore the scientific evidence supporting chakra healing and how energy medicine affects your physical body.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-eye mr-2"></i>
+                                <span>9.4k views</span>
+                                <span class="mx-3">·</span>
+                                <i class="fas fa-heart mr-2"></i>
+                                <span>623 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-start">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-sun text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Chakra Meditation for Beginners: Complete Guide</h3>
+                            <p class="text-gray-600 mb-3">Step-by-step instructions for starting your chakra meditation practice and experiencing immediate benefits.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-eye mr-2"></i>
+                                <span>11.1k views</span>
+                                <span class="mx-3">·</span>
+                                <i class="fas fa-heart mr-2"></i>
+                                <span>689 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Chakra Encyclopedia. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="privacy-policy.html" class="hover:text-purple-400">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-purple-400">Terms of Service</a>
+                <a href="index.html" class="hover:text-purple-400">Home</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

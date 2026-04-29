@@ -1,0 +1,387 @@
+/* Chakra Encyclopedia Custom Styles */
+
+/* Chakra Symbol Animations */
+.chakra-symbol-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.chakra-symbol {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: rotate 20s linear infinite;
+}
+
+.chakra-symbol.root {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, #FF0000, #FF6B6B);
+    top: 10px;
+    left: 10px;
+}
+
+.chakra-symbol.sacral {
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, #FF8C00, #FFA500);
+    top: 30px;
+    left: 30px;
+    animation-duration: 18s;
+    animation-direction: reverse;
+}
+
+.chakra-symbol.solar {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #FFD700, #FFED4E);
+    top: 50px;
+    left: 50px;
+    animation-duration: 16s;
+}
+
+.chakra-symbol.heart {
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, #00FF00, #90EE90);
+    top: 70px;
+    left: 70px;
+    animation-duration: 14s;
+    animation-direction: reverse;
+}
+
+.chakra-symbol.throat {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #0000FF, #4169E1);
+    top: 90px;
+    left: 90px;
+    animation-duration: 12s;
+}
+
+.chakra-symbol.third-eye {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #4B0082, #8A2BE2);
+    top: 110px;
+    left: 110px;
+    animation-duration: 10s;
+    animation-direction: reverse;
+}
+
+.chakra-symbol.crown {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #8B00FF, #DA70D6);
+    top: 130px;
+    left: 130px;
+    animation-duration: 8s;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Chakra Petal Designs */
+.chakra-petals {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+.petal {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin: center bottom;
+}
+
+/* Root Chakra - 4 petals */
+.petal.root { background: linear-gradient(to top, #FF0000, #FF6B6B); }
+.petal.root:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.root:nth-child(2) { transform: rotate(90deg) translateY(-20px); }
+.petal.root:nth-child(3) { transform: rotate(180deg) translateY(-20px); }
+.petal.root:nth-child(4) { transform: rotate(270deg) translateY(-20px); }
+
+/* Sacral Chakra - 6 petals */
+.petal.sacral { background: linear-gradient(to top, #FF8C00, #FFA500); }
+.petal.sacral:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.sacral:nth-child(2) { transform: rotate(60deg) translateY(-20px); }
+.petal.sacral:nth-child(3) { transform: rotate(120deg) translateY(-20px); }
+.petal.sacral:nth-child(4) { transform: rotate(180deg) translateY(-20px); }
+.petal.sacral:nth-child(5) { transform: rotate(240deg) translateY(-20px); }
+.petal.sacral:nth-child(6) { transform: rotate(300deg) translateY(-20px); }
+
+/* Solar Plexus Chakra - 10 petals */
+.petal.solar { background: linear-gradient(to top, #FFD700, #FFED4E); }
+.petal.solar:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.solar:nth-child(2) { transform: rotate(36deg) translateY(-20px); }
+.petal.solar:nth-child(3) { transform: rotate(72deg) translateY(-20px); }
+.petal.solar:nth-child(4) { transform: rotate(108deg) translateY(-20px); }
+.petal.solar:nth-child(5) { transform: rotate(144deg) translateY(-20px); }
+.petal.solar:nth-child(6) { transform: rotate(180deg) translateY(-20px); }
+.petal.solar:nth-child(7) { transform: rotate(216deg) translateY(-20px); }
+.petal.solar:nth-child(8) { transform: rotate(252deg) translateY(-20px); }
+.petal.solar:nth-child(9) { transform: rotate(288deg) translateY(-20px); }
+.petal.solar:nth-child(10) { transform: rotate(324deg) translateY(-20px); }
+
+/* Heart Chakra - 12 petals */
+.petal.heart { background: linear-gradient(to top, #00FF00, #90EE90); }
+.petal.heart:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.heart:nth-child(2) { transform: rotate(30deg) translateY(-20px); }
+.petal.heart:nth-child(3) { transform: rotate(60deg) translateY(-20px); }
+.petal.heart:nth-child(4) { transform: rotate(90deg) translateY(-20px); }
+.petal.heart:nth-child(5) { transform: rotate(120deg) translateY(-20px); }
+.petal.heart:nth-child(6) { transform: rotate(150deg) translateY(-20px); }
+.petal.heart:nth-child(7) { transform: rotate(180deg) translateY(-20px); }
+.petal.heart:nth-child(8) { transform: rotate(210deg) translateY(-20px); }
+.petal.heart:nth-child(9) { transform: rotate(240deg) translateY(-20px); }
+.petal.heart:nth-child(10) { transform: rotate(270deg) translateY(-20px); }
+.petal.heart:nth-child(11) { transform: rotate(300deg) translateY(-20px); }
+.petal.heart:nth-child(12) { transform: rotate(330deg) translateY(-20px); }
+
+/* Throat Chakra - 16 petals */
+.petal.throat { background: linear-gradient(to top, #0000FF, #4169E1); }
+.petal.throat:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.throat:nth-child(2) { transform: rotate(22.5deg) translateY(-20px); }
+.petal.throat:nth-child(3) { transform: rotate(45deg) translateY(-20px); }
+.petal.throat:nth-child(4) { transform: rotate(67.5deg) translateY(-20px); }
+.petal.throat:nth-child(5) { transform: rotate(90deg) translateY(-20px); }
+.petal.throat:nth-child(6) { transform: rotate(112.5deg) translateY(-20px); }
+.petal.throat:nth-child(7) { transform: rotate(135deg) translateY(-20px); }
+.petal.throat:nth-child(8) { transform: rotate(157.5deg) translateY(-20px); }
+.petal.throat:nth-child(9) { transform: rotate(180deg) translateY(-20px); }
+.petal.throat:nth-child(10) { transform: rotate(202.5deg) translateY(-20px); }
+.petal.throat:nth-child(11) { transform: rotate(225deg) translateY(-20px); }
+.petal.throat:nth-child(12) { transform: rotate(247.5deg) translateY(-20px); }
+.petal.throat:nth-child(13) { transform: rotate(270deg) translateY(-20px); }
+.petal.throat:nth-child(14) { transform: rotate(292.5deg) translateY(-20px); }
+.petal.throat:nth-child(15) { transform: rotate(315deg) translateY(-20px); }
+.petal.throat:nth-child(16) { transform: rotate(337.5deg) translateY(-20px); }
+
+/* Third Eye Chakra - 2 petals */
+.petal.third-eye { background: linear-gradient(to top, #4B0082, #8A2BE2); }
+.petal.third-eye:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.third-eye:nth-child(2) { transform: rotate(180deg) translateY(-20px); }
+
+/* Crown Chakra - 1000+ petals (simplified to 20 for display) */
+.petal.crown { background: linear-gradient(to top, #8B00FF, #DA70D6); }
+.petal.crown:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+.petal.crown:nth-child(2) { transform: rotate(18deg) translateY(-20px); }
+.petal.crown:nth-child(3) { transform: rotate(36deg) translateY(-20px); }
+.petal.crown:nth-child(4) { transform: rotate(54deg) translateY(-20px); }
+.petal.crown:nth-child(5) { transform: rotate(72deg) translateY(-20px); }
+.petal.crown:nth-child(6) { transform: rotate(90deg) translateY(-20px); }
+.petal.crown:nth-child(7) { transform: rotate(108deg) translateY(-20px); }
+.petal.crown:nth-child(8) { transform: rotate(126deg) translateY(-20px); }
+.petal.crown:nth-child(9) { transform: rotate(144deg) translateY(-20px); }
+.petal.crown:nth-child(10) { transform: rotate(162deg) translateY(-20px); }
+.petal.crown:nth-child(11) { transform: rotate(180deg) translateY(-20px); }
+.petal.crown:nth-child(12) { transform: rotate(198deg) translateY(-20px); }
+.petal.crown:nth-child(13) { transform: rotate(216deg) translateY(-20px); }
+.petal.crown:nth-child(14) { transform: rotate(234deg) translateY(-20px); }
+.petal.crown:nth-child(15) { transform: rotate(252deg) translateY(-20px); }
+.petal.crown:nth-child(16) { transform: rotate(270deg) translateY(-20px); }
+.petal.crown:nth-child(17) { transform: rotate(288deg) translateY(-20px); }
+.petal.crown:nth-child(18) { transform: rotate(306deg) translateY(-20px); }
+.petal.crown:nth-child(19) { transform: rotate(324deg) translateY(-20px); }
+.petal.crown:nth-child(20) { transform: rotate(342deg) translateY(-20px); }
+
+/* Breathing animation for meditation */
+.breathing-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Energy flow animation */
+.energy-flow {
+    position: relative;
+    overflow: hidden;
+}
+
+.energy-flow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: energy-flow 3s linear infinite;
+}
+
+@keyframes energy-flow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Chakra balance visualization */
+.balance-meter {
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to right, #FF0000, #FF8C00, #FFD700, #00FF00, #0000FF, #4B0082, #8B00FF);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.balance-indicator {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.5s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chakra-symbol-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .chakra-symbol.root { width: 180px; height: 180px; }
+    .chakra-symbol.sacral { width: 160px; height: 160px; }
+    .chakra-symbol.solar { width: 140px; height: 140px; }
+    .chakra-symbol.heart { width: 120px; height: 120px; }
+    .chakra-symbol.throat { width: 100px; height: 100px; }
+    .chakra-symbol.third-eye { width: 80px; height: 80px; }
+    .chakra-symbol.crown { width: 60px; height: 60px; }
+}
+
+/* Loading animations */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #8B00FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #333;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #8B00FF, #4B0082);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #6B00CC, #3B0072);
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .chakra-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for better accessibility */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid #8B00FF;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .chakra-card {
+        border: 2px solid #000;
+    }
+    
+    .chakra-gradient {
+        opacity: 0.8;
+    }
+}
