@@ -205,9 +205,9 @@
                 <a href="#chakras" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition transform hover:scale-105">
                     Explore Chakras
                 </a>
-                <button onclick="startChakraTest()" class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition transform hover:scale-105">
+                <a href="#balance" class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition transform hover:scale-105">
                     Take Chakra Test
-                </button>
+                </a>
             </div>
         </div>
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -702,31 +702,86 @@
             </div>
         </div>
     </section>
+
+    <!-- Balance Techniques Section -->
+    <section id="balance-techniques" class="py-20 bg-gray-100 dark:bg-dark-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 dark:text-dark-text mb-4">Balance Techniques</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Complementary practices to support your chakra healing journey
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center">
                     <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
                         <i class="fas fa-spa text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Meditation</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-dark-text mb-3">Meditation</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Guided meditations focused on each chakra help clear blockages and restore energy flow through visualization and breathwork.
                     </p>
+                    <!-- TODO: link to audio/embed -->
+                    <button class="mt-4 text-purple-600 hover:text-purple-700 font-medium">
+                        Start Meditation <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
                 </div>
                 <div class="text-center">
                     <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
                         <i class="fas fa-music text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Sound Healing</h3>
-                    <p class="text-gray-600">
-                        Specific frequencies and mantras resonate with each chakra, helping to balance and harmonize your energy centers.
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-dark-text mb-3">Sound Healing</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Specific frequencies and tones resonate with each chakra, helping to restore balance and remove energetic blockages.
                     </p>
+                    <!-- TODO: link to audio/embed -->
+                    <button class="mt-4 text-purple-600 hover:text-purple-700 font-medium">
+                        Listen Now <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
                 </div>
                 <div class="text-center">
                     <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
                         <i class="fas fa-gem text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Crystal Therapy</h3>
-                    <p class="text-gray-600">
-                        Color-coded crystals and stones correspond to each chakra, amplifying healing energy and supporting balance.
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-dark-text mb-3">Crystal Therapy</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Crystals and gemstones correspond to chakra energies, providing grounding and amplification for healing work.
+                    </p>
+                    <!-- TODO: link to crystal guide -->
+                    <button class="mt-4 text-purple-600 hover:text-purple-700 font-medium">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 dark:text-dark-text mb-4">About Chakra Encyclopedia</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Your comprehensive resource for understanding and balancing your energy centers
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="heading-font text-3xl font-bold text-gray-800 dark:text-dark-text mb-6">Our Mission</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        We bridge ancient wisdom with modern science to provide accessible, accurate information about the chakra system. Our science-based approach helps you understand your energy patterns while honoring the spiritual traditions that have preserved this knowledge for millennia.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Whether you're new to chakra work or an experienced practitioner, our comprehensive guides, interactive assessments, and practical techniques support your journey toward balance and well-being.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="chakra-gradient w-64 h-64 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-infinity text-white text-6xl"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "The chakra system is a bridge between the physical and spiritual, offering a map to our inner landscape."
                     </p>
                 </div>
             </div>
@@ -750,6 +805,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Root Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Grounding and stability meditation</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -760,6 +816,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Sacral Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Creativity and emotional flow</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -768,8 +825,9 @@
                     <div class="solar-bg w-full h-32 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fas fa-play-circle text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Solar Plexus Meditation</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Solar Plexus Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Personal power and confidence</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -780,6 +838,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Heart Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Love and compassion practice</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -790,6 +849,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Throat Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Expression and communication</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -798,8 +858,9 @@
                     <div class="third-eye-bg w-full h-32 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fas fa-play-circle text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Third Eye Meditation</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Third Eye Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Intuition and inner wisdom</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -810,6 +871,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Crown Chakra Meditation</h3>
                     <p class="text-gray-600 text-sm mb-3">Spiritual connection</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -820,6 +882,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Full Chakra Balance</h3>
                     <p class="text-gray-600 text-sm mb-3">Complete system alignment</p>
+                    <!-- TODO: link to audio/embed -->
                     <button class="text-purple-600 hover:text-purple-700 font-medium text-sm">
                         Start Meditation <i class="fas fa-arrow-right ml-1"></i>
                     </button>
@@ -827,24 +890,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Chakra Test Modal -->
-    <div id="chakraTestModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="heading-font text-2xl font-bold text-gray-800">Chakra Balance Assessment</h3>
-                    <button onclick="closeChakraTest()" class="text-gray-400 hover:text-gray-600">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div id="testContent">
-                    <p class="text-gray-600 mb-6">Answer these questions to discover which chakras may need attention.</p>
-                    <!-- Test questions will be dynamically loaded here -->
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
@@ -871,7 +916,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Resources</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Chakra Test</a></li>
+                        <!-- TODO: add real URLs -->
+                        <li><a href="#balance" class="hover:text-white transition">Chakra Test</a></li>
                         <li><a href="#" class="hover:text-white transition">Crystal Guide</a></li>
                         <li><a href="#" class="hover:text-white transition">Sound Frequencies</a></li>
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
@@ -886,6 +932,7 @@
                         <a href="https://www.tiktok.com/@accidentalmeditation" target="_blank" class="text-gray-400 hover:text-white transition">
                             <i class="fab fa-tiktok text-xl"></i>
                         </a>
+                        <!-- TODO: add real URLs -->
                         <a href="#" class="text-gray-400 hover:text-white transition">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
@@ -901,8 +948,8 @@
                     </p>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Chakra Encyclopedia. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms of Service</a></p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Chakra Encyclopedia. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1107,16 +1154,11 @@
                     return;
                 }
                 
-                console.log('Before hiding - testStart classes:', testStart.className);
-                console.log('Before showing - testQuestions classes:', testQuestions.className);
-                
+                // Hide start, show questions
                 testStart.classList.add('hidden');
                 testQuestions.classList.remove('hidden');
                 
-                console.log('After hiding - testStart classes:', testStart.className);
-                console.log('After showing - testQuestions classes:', testQuestions.className);
-                console.log('testQuestions display style:', window.getComputedStyle(testQuestions).display);
-                console.log('testQuestions visibility style:', window.getComputedStyle(testQuestions).visibility);
+                console.log('Test started, showing questions');
                 
                 currentQuestionIndex = 0;
                 userAnswers = {};
