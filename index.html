@@ -590,13 +590,95 @@
     <section id="balance" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Balance Your Chakras</h2>
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Science-Based Chakra Assessment</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Discover techniques to harmonize your energy centers and achieve optimal well-being
+                    Discover your energy patterns through psychological and physiological indicators
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div id="chakraTestContainer" class="max-w-4xl mx-auto">
+                <!-- Test Start -->
+                <div id="testStart" class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-brain text-purple-600 text-3xl"></i>
+                        </div>
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Discover Your Energy Profile</h3>
+                        <p class="text-gray-600 mb-8">
+                            This 21-question assessment combines psychological science with metaphysical wisdom to evaluate your chakra balance.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-8 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i class="fas fa-microscope text-purple-500 mr-2"></i>
+                                <span>Science-Based Questions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-heart text-purple-500 mr-2"></i>
+                                <span>Psychological Indicators</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-spa text-purple-500 mr-2"></i>
+                                <span>Energy Analysis</span>
+                            </div>
+                        </div>
+                        <button onclick="startChakraTest()" class="bg-purple-600 text-white px-8 py-4 rounded-full hover:bg-purple-700 transition transform hover:scale-105 text-lg font-semibold">
+                            Begin Assessment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Test Questions -->
+                <div id="testQuestions" class="hidden">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <!-- Progress Bar -->
+                        <div class="mb-8">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>Question <span id="currentQuestion">1</span> of 21</span>
+                                <span id="progressPercent">5%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div id="progressBar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 5%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Question -->
+                        <div id="questionContainer" class="text-center">
+                            <h3 id="questionText" class="heading-font text-2xl font-bold text-gray-800 mb-8"></h3>
+                            <div id="answerOptions" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Results -->
+                <div id="testResults" class="hidden">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <div class="text-center mb-8">
+                            <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Your Energy Profile</h3>
+                            <p class="text-gray-600">Based on your responses, here's your chakra balance analysis</p>
+                        </div>
+
+                        <!-- Chakra Results -->
+                        <div id="chakraResults" class="space-y-6 mb-8"></div>
+
+                        <!-- Recommendations -->
+                        <div class="bg-purple-50 rounded-xl p-6">
+                            <h4 class="heading-font text-xl font-bold text-gray-800 mb-4">Personalized Recommendations</h4>
+                            <div id="recommendations" class="space-y-3 text-gray-700"></div>
+                        </div>
+
+                        <div class="text-center mt-8">
+                            <button onclick="retakeTest()" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition mr-4">
+                                Retake Test
+                            </button>
+                            <button onclick="shareResults()" class="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-full hover:bg-purple-50 transition">
+                                Share Results
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                 <div class="text-center">
                     <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
                         <i class="fas fa-spa text-purple-600 text-2xl"></i>
@@ -841,9 +923,273 @@
             mobileMenu.classList.toggle('hidden');
         }
 
+        // Chakra Test Data
+        const chakraTestQuestions = [
+            {
+                question: "How often do you experience physical tension in your lower back or hips?",
+                chakra: "root",
+                options: ["Never", "Rarely", "Sometimes", "Often", "Very frequently"]
+            },
+            {
+                question: "How would you rate your sense of financial security?",
+                chakra: "root",
+                options: ["Very secure", "Mostly secure", "Somewhat secure", "Insecure", "Very insecure"]
+            },
+            {
+                question: "How well do you sleep through the night?",
+                chakra: "root",
+                options: ["Excellent", "Good", "Fair", "Poor", "Very poor"]
+            },
+            {
+                question: "How easily do you express your creative ideas?",
+                chakra: "sacral",
+                options: ["Very easily", "Easily", "Moderately", "With difficulty", "Very difficult"]
+            },
+            {
+                question: "How would you describe your emotional flexibility?",
+                chakra: "sacral",
+                options: ["Very flexible", "Flexible", "Moderately flexible", "Rigid", "Very rigid"]
+            },
+            {
+                question: "How satisfied are you with your intimate relationships?",
+                chakra: "sacral",
+                options: ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"]
+            },
+            {
+                question: "How confident do you feel making important decisions?",
+                chakra: "solar",
+                options: ["Very confident", "Confident", "Moderately confident", "Not confident", "Very insecure"]
+            },
+            {
+                question: "How would you rate your personal power and influence?",
+                chakra: "solar",
+                options: ["Very strong", "Strong", "Moderate", "Weak", "Very weak"]
+            },
+            {
+                question: "How well do you maintain healthy boundaries?",
+                chakra: "solar",
+                options: ["Excellent", "Good", "Fair", "Poor", "Very poor"]
+            },
+            {
+                question: "How easily do you give and receive love?",
+                chakra: "heart",
+                options: ["Very easily", "Easily", "Moderately", "With difficulty", "Very difficult"]
+            },
+            {
+                question: "How would you rate your capacity for forgiveness?",
+                chakra: "heart",
+                options: ["Very forgiving", "Forgiving", "Moderately", "Holding grudges", "Very resentful"]
+            },
+            {
+                question: "How connected do you feel to others?",
+                chakra: "heart",
+                options: ["Very connected", "Connected", "Somewhat connected", "Disconnected", "Very isolated"]
+            },
+            {
+                question: "How clearly do you communicate your thoughts?",
+                chakra: "throat",
+                options: ["Very clearly", "Clearly", "Moderately", "Unclearly", "Very unclearly"]
+            },
+            {
+                question: "How comfortable are you speaking your truth?",
+                chakra: "throat",
+                options: ["Very comfortable", "Comfortable", "Neutral", "Uncomfortable", "Very uncomfortable"]
+            },
+            {
+                question: "How well do you listen to others?",
+                chakra: "throat",
+                options: ["Excellent", "Good", "Fair", "Poor", "Very poor"]
+            },
+            {
+                question: "How often do you experience intuitive insights?",
+                chakra: "third-eye",
+                options: ["Very frequently", "Frequently", "Sometimes", "Rarely", "Never"]
+            },
+            {
+                question: "How would you rate your mental clarity?",
+                chakra: "third-eye",
+                options: ["Very clear", "Clear", "Moderately clear", "Cloudy", "Very confused"]
+            },
+            {
+                question: "How vivid are your dreams or visualizations?",
+                chakra: "third-eye",
+                options: ["Very vivid", "Vivid", "Moderate", "Faint", "None"]
+            },
+            {
+                question: "How connected do you feel to something greater than yourself?",
+                chakra: "crown",
+                options: ["Very connected", "Connected", "Somewhat connected", "Disconnected", "Very disconnected"]
+            },
+            {
+                question: "How would you rate your sense of life purpose?",
+                chakra: "crown",
+                options: ["Very clear", "Clear", "Somewhat clear", "Unclear", "No purpose"]
+            },
+            {
+                question: "How often do you experience moments of transcendence?",
+                chakra: "crown",
+                options: ["Very frequently", "Frequently", "Sometimes", "Rarely", "Never"]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+
         // Chakra test function
         function startChakraTest() {
-            alert('Chakra Test coming soon!');
+            document.getElementById('testStart').classList.add('hidden');
+            document.getElementById('testQuestions').classList.remove('hidden');
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = chakraTestQuestions[currentQuestionIndex];
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('progressPercent').textContent = Math.round((currentQuestionIndex + 1) / 21 * 100) + '%';
+            document.getElementById('progressBar').style.width = Math.round((currentQuestionIndex + 1) / 21 * 100) + '%';
+            
+            document.getElementById('questionText').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('answerOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-400 hover:bg-purple-50 transition text-gray-700';
+                button.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center">
+                            <span class="text-sm font-semibold">${String.fromCharCode(65 + index)}</span>
+                        </span>
+                        <span>${option}</span>
+                    </div>
+                `;
+                button.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answerIndex) {
+            const question = chakraTestQuestions[currentQuestionIndex];
+            userAnswers[question.chakra] = (userAnswers[question.chakra] || []);
+            userAnswers[question.chakra].push(answerIndex);
+            
+            currentQuestionIndex++;
+            if (currentQuestionIndex < chakraTestQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('testQuestions').classList.add('hidden');
+            document.getElementById('testResults').classList.remove('hidden');
+            
+            // Calculate chakra scores
+            const chakraScores = {};
+            const chakras = ['root', 'sacral', 'solar', 'heart', 'throat', 'third-eye', 'crown'];
+            
+            chakras.forEach(chakra => {
+                const answers = userAnswers[chakra] || [0, 0, 0];
+                const score = answers.reduce((sum, answer) => sum + answer, 0);
+                chakraScores[chakra] = Math.round((score / 15) * 100); // Convert to percentage
+            });
+            
+            // Display results
+            const resultsContainer = document.getElementById('chakraResults');
+            resultsContainer.innerHTML = '';
+            
+            const chakraInfo = {
+                root: { name: 'Root Chakra', color: '#FF0000', icon: 'fa-gem' },
+                sacral: { name: 'Sacral Chakra', color: '#FF8C00', icon: 'fa-water' },
+                solar: { name: 'Solar Plexus', color: '#FFD700', icon: 'fa-sun' },
+                heart: { name: 'Heart Chakra', color: '#00FF00', icon: 'fa-heart' },
+                throat: { name: 'Throat Chakra', color: '#0000FF', icon: 'fa-microphone' },
+                'third-eye': { name: 'Third Eye', color: '#4B0082', icon: 'fa-eye' },
+                crown: { name: 'Crown Chakra', color: '#8B00FF', icon: 'fa-crown' }
+            };
+            
+            chakras.forEach(chakra => {
+                const info = chakraInfo[chakra];
+                const score = chakraScores[chakra];
+                const status = score >= 80 ? 'Balanced' : score >= 60 ? 'Moderate' : 'Needs Attention';
+                const statusColor = score >= 80 ? 'text-green-600' : score >= 60 ? 'text-yellow-600' : 'text-red-600';
+                
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'bg-gray-50 rounded-lg p-6';
+                resultDiv.innerHTML = `
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: ${info.color}20;">
+                                <i class="fas ${info.icon}" style="color: ${info.color};"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">${info.name}</h4>
+                                <span class="text-sm ${statusColor}">${status}</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-bold" style="color: ${info.color};">${score}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="h-3 rounded-full transition-all duration-500" style="background: ${info.color}; width: ${score}%;"></div>
+                    </div>
+                `;
+                resultsContainer.appendChild(resultDiv);
+            });
+            
+            // Generate recommendations
+            const recommendations = generateRecommendations(chakraScores);
+            const recommendationsContainer = document.getElementById('recommendations');
+            recommendationsContainer.innerHTML = recommendations.map(rec => 
+                `<div class="flex items-start">
+                    <i class="fas fa-check-circle text-purple-600 mr-3 mt-1"></i>
+                    <p>${rec}</p>
+                </div>`
+            ).join('');
+        }
+
+        function generateRecommendations(scores) {
+            const recommendations = [];
+            
+            if (scores.root < 60) {
+                recommendations.push("Focus on grounding exercises: walking barefoot, root vegetables, and establishing a daily routine for stability.");
+            }
+            if (scores.sacral < 60) {
+                recommendations.push("Engage in creative activities: dance, art, or music. Practice emotional expression through journaling.");
+            }
+            if (scores.solar < 60) {
+                recommendations.push("Build personal power through exercise, goal-setting, and practicing assertive communication.");
+            }
+            if (scores.heart < 60) {
+                recommendations.push("Practice loving-kindness meditation and forgiveness exercises. Spend time in nature.");
+            }
+            if (scores.throat < 60) {
+                recommendations.push("Practice speaking your truth through journaling, singing, or joining a speaking group.");
+            }
+            if (scores['third-eye'] < 60) {
+                recommendations.push("Develop intuition through meditation, visualization exercises, and paying attention to dreams.");
+            }
+            if (scores.crown < 60) {
+                recommendations.push("Connect with your spiritual practice through meditation, prayer, or spending time in silence.");
+            }
+            
+            // Find strongest chakra
+            const strongestChakra = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            recommendations.push(`Your ${strongestChakra.replace('-', ' ')} chakra is your strength - leverage this energy to support other areas.`);
+            
+            return recommendations;
+        }
+
+        function retakeTest() {
+            document.getElementById('testResults').classList.add('hidden');
+            document.getElementById('testStart').classList.remove('hidden');
+        }
+
+        function shareResults() {
+            alert('Share functionality coming soon! Take a screenshot of your results to share.');
         }
 
         // Smooth scrolling for navigation links
