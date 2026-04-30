@@ -348,6 +348,12 @@
         .chakra-mobile-btn:active {
             transform: scale(0.98);
         }
+
+        /* Dynamic Learn More button hover effect */
+        #learnMoreBtn:hover {
+            filter: brightness(0.9);
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
@@ -638,7 +644,7 @@
                                     <div id="chakraSymbol" class="text-4xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;"></div>
                                 </div>
                                 <p id="chakraDescription" class="text-gray-600 dark:text-gray-300 mb-4"></p>
-                                <button class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition" onclick="scrollToChakraCard(this.getAttribute('data-chakra'))">
+                                <button id="learnMoreBtn" class="w-full text-white px-4 py-2 rounded-lg transition" onclick="scrollToChakraCard(this.getAttribute('data-chakra'))">
                                     Learn More
                                 </button>
                             </div>
@@ -2407,6 +2413,14 @@
                     chakraDescription.textContent = data.description;
                     chakraSymbol.textContent = data.symbol;
                     chakraSymbol.style.color = data.color;
+
+                    // Update Learn More button color and data attribute
+                    const learnMoreBtn = document.getElementById('learnMoreBtn');
+                    if (learnMoreBtn) {
+                        learnMoreBtn.style.backgroundColor = data.color;
+                        learnMoreBtn.style.hover = `${data.color}dd`;
+                        learnMoreBtn.setAttribute('data-chakra', chakraKey);
+                    }
 
                     // Enhanced glow effect on visual element
                     if (visualElement) {
