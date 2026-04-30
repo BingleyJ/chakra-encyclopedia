@@ -35,7 +35,7 @@ A comprehensive, beautiful, and interactive website exploring the 7 chakra syste
 ```
 
 ### 2. AdSense Integration
-1. **Get AdSense Account**: Sign up at [google.com/adsense](https://google.com/adsense)
+
 2. **Replace Placeholder Codes**: In `index.html`, replace:
    ```html
    <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your AdSense publisher ID -->
