@@ -1,0 +1,32 @@
+[build]
+  publish = "index.html"
+  command = "echo 'No build needed - static HTML'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Optimize for performance and reduce build time
+[build.processing]
+  skip_processing = true
+
+# Cache settings to reduce rebuilds
+[build.cache]
+  paths = ["assets/*", "images/*"]
+
+# Headers for performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+# Redirects for SEO
+[[redirects]]
+  from = "/index-es.html"
+  to = "/es/"
+  status = 301
+
+# Optimize asset delivery
+[[edge_functions]]
+  path = "/api/*"
