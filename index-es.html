@@ -152,6 +152,19 @@
         .throat-bg { background: linear-gradient(135deg, #0000FF, #4169E1); }
         .third-eye-bg { background: linear-gradient(135deg, #4B0082, #8A2BE2); }
         .crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
+
+        /* Stable mobile viewport height */
+        @supports (height: 100dvh) {
+            .mobile-stable-height {
+                height: 100dvh;
+            }
+        }
+        
+        @supports not (height: 100dvh) {
+            .mobile-stable-height {
+                height: 100vh;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
