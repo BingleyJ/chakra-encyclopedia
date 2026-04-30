@@ -16,6 +16,10 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Sanskrit symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -282,7 +286,7 @@
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-gem text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">लं</span>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +329,7 @@
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-water text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">वं</span>
                                 </div>
                             </div>
                         </div>
@@ -368,7 +372,7 @@
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-sun text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">रं</span>
                                 </div>
                             </div>
                         </div>
@@ -411,7 +415,7 @@
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-heart text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">यं</span>
                                 </div>
                             </div>
                         </div>
@@ -454,7 +458,7 @@
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-microphone text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">हं</span>
                                 </div>
                             </div>
                         </div>
@@ -497,7 +501,7 @@
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-eye text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                                 </div>
                             </div>
                         </div>
@@ -540,7 +544,7 @@
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-crown text-4xl"></i>
+                                    <span class="text-4xl font-bold text-white" style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                                 </div>
                             </div>
                         </div>
@@ -782,7 +786,7 @@
                 <!-- Root Chakra -->
                 <div onclick="openMeditationModal('root')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="root-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">LAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">लं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Root Chakra</h3>
                     <p class="text-red-600 text-sm font-medium mb-3">Muladhara · Red · Earth</p>
@@ -796,7 +800,7 @@
                 <!-- Sacral Chakra -->
                 <div onclick="openMeditationModal('sacral')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="sacral-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">VAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">वं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Sacral Chakra</h3>
                     <p class="text-orange-600 text-sm font-medium mb-3">Svadhisthana · Orange · Water</p>
@@ -810,7 +814,7 @@
                 <!-- Solar Plexus Chakra -->
                 <div onclick="openMeditationModal('solar')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="solar-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">RAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">रं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Solar Plexus Chakra</h3>
                     <p class="text-yellow-600 text-sm font-medium mb-3">Manipura · Yellow · Fire</p>
@@ -824,7 +828,7 @@
                 <!-- Heart Chakra -->
                 <div onclick="openMeditationModal('heart')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="heart-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">YAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">यं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Heart Chakra</h3>
                     <p class="text-green-600 text-sm font-medium mb-3">Anahata · Green · Air</p>
@@ -838,7 +842,7 @@
                 <!-- Throat Chakra -->
                 <div onclick="openMeditationModal('throat')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="throat-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">HAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">हं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Throat Chakra</h3>
                     <p class="text-blue-600 text-sm font-medium mb-3">Vishuddha · Blue · Ether</p>
@@ -852,7 +856,7 @@
                 <!-- Third Eye Chakra -->
                 <div onclick="openMeditationModal('third-eye')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="third-eye-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">OM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Third Eye Chakra</h3>
                     <p class="text-indigo-600 text-sm font-medium mb-3">Ajna · Indigo · Light</p>
@@ -866,7 +870,7 @@
                 <!-- Crown Chakra -->
                 <div onclick="openMeditationModal('crown')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="crown-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">AUM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Crown Chakra</h3>
                     <p class="text-purple-600 text-sm font-medium mb-3">Sahasrara · Violet · Cosmic</p>
@@ -880,7 +884,7 @@
                 <!-- Full System Balance -->
                 <div onclick="openMeditationModal('full')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer">
                     <div class="chakra-gradient w-full h-20 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-2xl font-bold">SO-HAM</span>
+                        <span class="text-white text-2xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;">सो-हं</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text mb-1">Full Chakra Balance</h3>
                     <p class="text-purple-600 text-sm font-medium mb-3">All Chakras · Rainbow · Integration</p>
@@ -1371,56 +1375,56 @@
         const meditationData = {
             root: {
                 name: 'Root Chakra',
-                mantra: 'LAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">लं</span>',
                 color: '#FF0000',
                 breath: '4-4-4',
                 visualization: 'Red sphere at base of spine, roots extending into earth'
             },
             sacral: {
                 name: 'Sacral Chakra',
-                mantra: 'VAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">वं</span>',
                 color: '#FF8C00',
                 breath: '4-7-8',
                 visualization: 'Orange water flowing through pelvis'
             },
             solar: {
                 name: 'Solar Plexus',
-                mantra: 'RAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">रं</span>',
                 color: '#FFD700',
                 breath: 'Rapid exhales',
                 visualization: 'Golden sun in upper abdomen'
             },
             heart: {
                 name: 'Heart Chakra',
-                mantra: 'YAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">यं</span>',
                 color: '#00FF00',
                 breath: '4-7-8',
                 visualization: 'Green light expanding from chest'
             },
             throat: {
                 name: 'Throat Chakra',
-                mantra: 'HAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">हं</span>',
                 color: '#0000FF',
                 breath: 'Alternate nostril',
                 visualization: 'Blue light flowing from throat'
             },
             'third-eye': {
                 name: 'Third Eye',
-                mantra: 'OM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">ॐ</span>',
                 color: '#4B0082',
                 breath: '2:1 ratio',
                 visualization: 'Indigo flame between eyebrows'
             },
             crown: {
                 name: 'Crown Chakra',
-                mantra: 'AUM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">ॐ</span>',
                 color: '#8B00FF',
                 breath: 'Natural breath',
                 visualization: 'Violet light streaming upward'
             },
             full: {
                 name: 'Full Chakra Balance',
-                mantra: 'SO-HAM',
+                mantra: '<span style="font-family: \'Noto Sans Devanagari\', sans-serif;">सो-हं</span>',
                 color: 'rainbow',
                 breath: 'Chakra breathing',
                 visualization: 'Light moving up spine through all colors'
