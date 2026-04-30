@@ -20,6 +20,10 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Sanskrit symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -32,6 +36,16 @@
                             text: '#e0e0e0',
                             border: '#2a2a2a'
                         }
+                    },
+                    fontSize: {
+                        'sanskrit-xs': ['1.125rem', { lineHeight: '1.75' }],
+                        'sanskrit-sm': ['1.25rem', { lineHeight: '1.75' }],
+                        'sanskrit-base': ['1.5rem', { lineHeight: '1.75' }],
+                        'sanskrit-lg': ['2.25rem', { lineHeight: '1.75' }],
+                        'sanskrit-xl': ['3rem', { lineHeight: '1.75' }],
+                        'sanskrit-2xl': ['3.75rem', { lineHeight: '1.75' }],
+                        'sanskrit-3xl': ['4.5rem', { lineHeight: '1.75' }],
+                        'sanskrit-4xl': ['6rem', { lineHeight: '1.75' }]
                     }
                 }
             }
@@ -278,17 +292,123 @@
                 </p>
             </div>
 
+            <!-- Interactive Body Map -->
+            <div class="mb-16">
+                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
+                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8">Mapa Interactivo del Cuerpo Chakra</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Pasa el cursor o haz clic en los puntos chakra para explorar cada centro de energía</p>
+                    
+                    <div class="flex justify-center">
+                        <div class="relative">
+                            <svg width="280" height="600" viewBox="0 0 280 600" class="w-full h-auto max-w-md">
+                                <!-- Body Silhouette -->
+                                <g id="bodySilhouette" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2">
+                                    <!-- Head -->
+                                    <ellipse cx="140" cy="60" rx="35" ry="40"/>
+                                    <!-- Neck -->
+                                    <rect x="125" y="95" width="30" height="25"/>
+                                    <!-- Shoulders -->
+                                    <rect x="80" y="115" width="120" height="15"/>
+                                    <!-- Arms -->
+                                    <rect x="70" y="130" width="15" height="120" rx="7"/>
+                                    <rect x="195" y="130" width="15" height="120" rx="7"/>
+                                    <!-- Torso -->
+                                    <rect x="100" y="130" width="80" height="180" rx="10"/>
+                                    <!-- Hips -->
+                                    <path d="M 100 310 L 180 310 L 170 340 L 110 340 Z"/>
+                                    <!-- Legs -->
+                                    <rect x="110" y="340" width="20" height="200" rx="10"/>
+                                    <rect x="150" y="340" width="20" height="200" rx="10"/>
+                                </g>
+                                
+                                <!-- Chakra Points -->
+                                <g id="chakraPoints">
+                                    <!-- Crown Chakra -->
+                                    <circle cx="140" cy="25" r="12" fill="#8B00FF" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-16" 
+                                            data-chakra="crown" style="filter: drop-shadow(0 0 8px rgba(139, 0, 255, 0.6));">
+                                        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Third Eye Chakra -->
+                                    <circle cx="140" cy="65" r="10" fill="#4B0082" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-14"
+                                            data-chakra="third-eye" style="filter: drop-shadow(0 0 8px rgba(75, 0, 130, 0.6));">
+                                        <animate attributeName="r" values="10;12;10" dur="3.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Throat Chakra -->
+                                    <circle cx="140" cy="105" r="10" fill="#0000FF" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-14"
+                                            data-chakra="throat" style="filter: drop-shadow(0 0 8px rgba(0, 0, 255, 0.6));">
+                                        <animate attributeName="r" values="10;12;10" dur="4s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Heart Chakra -->
+                                    <circle cx="140" cy="180" r="12" fill="#00FF00" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-16"
+                                            data-chakra="heart" style="filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.6));">
+                                        <animate attributeName="r" values="12;14;12" dur="2.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Solar Plexus Chakra -->
+                                    <circle cx="140" cy="230" r="11" fill="#FFD700" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-15"
+                                            data-chakra="solar" style="filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));">
+                                        <animate attributeName="r" values="11;13;11" dur="2.8s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Sacral Chakra -->
+                                    <circle cx="140" cy="280" r="11" fill="#FF8C00" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-15"
+                                            data-chakra="sacral" style="filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));">
+                                        <animate attributeName="r" values="11;13;11" dur="3.2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Root Chakra -->
+                                    <circle cx="140" cy="330" r="12" fill="#FF0000" opacity="0.8" class="chakra-point cursor-pointer transition-all duration-300 hover:r-16"
+                                            data-chakra="root" style="filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.6));">
+                                        <animate attributeName="r" values="12;14;12" dur="2.2s" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
+                                
+                                <!-- Energy Lines -->
+                                <g id="energyLines" stroke="url(#energyGradient)" stroke-width="2" fill="none" opacity="0.3">
+                                    <path d="M 140 25 Q 160 180 140 330" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                                    </path>
+                                    <path d="M 140 25 Q 120 180 140 330" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Gradient Definitions -->
+                                <defs>
+                                    <linearGradient id="energyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8B00FF;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#FF0000;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Chakra Info Display -->
+                    <div id="chakraInfo" class="mt-8 p-6 bg-gray-50 dark:bg-dark-border rounded-lg hidden">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 id="chakraName" class="text-xl font-bold text-gray-800 dark:text-dark-text mb-2"></h4>
+                                <p id="chakraDescription" class="text-gray-600 dark:text-gray-300"></p>
+                            </div>
+                            <div id="chakraSymbol" class="text-4xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="space-y-12">
                 <!-- Root Chakra -->
                 <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-gem text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Root Chakra Sanskrit Symbol - LAM">लं</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Chakra Raíz</h3>
-                                <p class="text-lg">Muladhara</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -329,11 +449,9 @@
                     <div class="md:flex">
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-water text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Sacral Chakra Sanskrit Symbol - VAM">वं</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Chakra Sacro</h3>
-                                <p class="text-lg">Svadhisthana</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -374,11 +492,9 @@
                     <div class="md:flex">
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-sun text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Solar Plexus Sanskrit Symbol - RAM">रं</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Plexo Solar</h3>
-                                <p class="text-lg">Manipura</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -419,11 +535,9 @@
                     <div class="md:flex">
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-heart text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Heart Chakra Sanskrit Symbol - YAM">यं</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Chakra Corazón</h3>
-                                <p class="text-lg">Anahata</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -464,11 +578,9 @@
                     <div class="md:flex">
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-microphone text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Throat Chakra Sanskrit Symbol - HAM">हं</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Chakra Garganta</h3>
-                                <p class="text-lg">Vishuddha</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -509,11 +621,9 @@
                     <div class="md:flex">
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-eye text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Third Eye Chakra Sanskrit Symbol - OM">ॐ</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Tercer Ojo</h3>
-                                <p class="text-lg">Ajna</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -554,11 +664,9 @@
                     <div class="md:flex">
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-crown text-4xl"></i>
+                                <div class="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="text-sanskrit-3xl font-bold text-white sm:text-sanskrit-4xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Crown Chakra Sanskrit Symbol - AUM">ॐ</span>
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Chakra Corona</h3>
-                                <p class="text-lg">Sahasrara</p>
                             </div>
                         </div>
                         <div class="md:w-2/3 p-8">
@@ -960,6 +1068,203 @@
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
         }
+
+        // Audio Singleton Controller
+        class AudioController {
+            constructor() {
+                this.currentAudio = null;
+                this.currentElement = null;
+                this.isPlaying = false;
+            }
+
+            async playAudio(audioFile, element) {
+                // Stop any currently playing audio
+                this.stopAudio();
+
+                try {
+                    const audioPath = `/assets/audio/${audioFile}`;
+                    this.currentAudio = new Audio(audioPath);
+                    this.currentElement = element;
+                    
+                    // Set up event listeners
+                    this.currentAudio.addEventListener('ended', () => {
+                        this.isPlaying = false;
+                        this.updatePlayButton();
+                    });
+
+                    this.currentAudio.addEventListener('error', (e) => {
+                        console.warn(`Audio file not found: ${audioFile}`);
+                        this.isPlaying = false;
+                        this.updatePlayButton();
+                    });
+
+                    await this.currentAudio.play();
+                    this.isPlaying = true;
+                    this.updatePlayButton();
+                } catch (error) {
+                    console.warn(`Could not play audio: ${audioFile}`, error);
+                    this.isPlaying = false;
+                    this.updatePlayButton();
+                }
+            }
+
+            stopAudio() {
+                if (this.currentAudio) {
+                    this.currentAudio.pause();
+                    this.currentAudio.currentTime = 0;
+                    this.currentAudio = null;
+                    this.currentElement = null;
+                    this.isPlaying = false;
+                    this.updatePlayButton();
+                }
+            }
+
+            togglePlayPause(audioFile, element) {
+                if (this.isPlaying && this.currentElement === element) {
+                    this.currentAudio.pause();
+                    this.isPlaying = false;
+                } else if (this.isPlaying && this.currentElement !== element) {
+                    this.stopAudio();
+                    this.playAudio(audioFile, element);
+                } else {
+                    this.playAudio(audioFile, element);
+                }
+                this.updatePlayButton();
+            }
+
+            updatePlayButton() {
+                const playButton = document.getElementById('audioPlayButton');
+                if (playButton) {
+                    if (this.isPlaying) {
+                        playButton.innerHTML = '<i class="fas fa-pause mr-2"></i>Pausar';
+                        playButton.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+                        playButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                    } else {
+                        playButton.innerHTML = '<i class="fas fa-play mr-2"></i>Reproducir';
+                        playButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                        playButton.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                    }
+                }
+            }
+
+            setVolume(volume) {
+                if (this.currentAudio) {
+                    this.currentAudio.volume = volume;
+                }
+            }
+        }
+
+        // Global audio controller instance
+        const audioController = new AudioController();
+
+        // Interactive Body Map functionality
+        function setupBodyMap() {
+            const chakraPoints = document.querySelectorAll('.chakra-point');
+            const chakraInfo = document.getElementById('chakraInfo');
+            const chakraName = document.getElementById('chakraName');
+            const chakraDescription = document.getElementById('chakraDescription');
+            const chakraSymbol = document.getElementById('chakraSymbol');
+
+            const chakraInfoData = {
+                crown: {
+                    name: 'Chakra Corona (Sahasrara)',
+                    description: 'Conexión espiritual, iluminación y conciencia cósmica. Ubicado en la parte superior de la cabeza.',
+                    symbol: 'AUM',
+                    color: '#8B00FF'
+                },
+                'third-eye': {
+                    name: 'Chakra Tercer Ojo (Ajna)',
+                    description: 'Intuición, percepción y habilidades psíquicas. Ubicado entre las cejas.',
+                    symbol: 'OM',
+                    color: '#4B0082'
+                },
+                throat: {
+                    name: 'Chakra Garganta (Vishuddha)',
+                    description: 'Comunicación, expresión y verdad. Ubicado en la garganta.',
+                    symbol: 'HAM',
+                    color: '#0000FF'
+                },
+                heart: {
+                    name: 'Chakra Corazón (Anahata)',
+                    description: 'Amor, compasión y equilibrio emocional. Ubicado en el centro del pecho.',
+                    symbol: 'YAM',
+                    color: '#00FF00'
+                },
+                solar: {
+                    name: 'Chakra Plexo Solar (Manipura)',
+                    description: 'Poder personal, confianza y transformación. Ubicado en el abdomen superior.',
+                    symbol: 'RAM',
+                    color: '#FFD700'
+                },
+                sacral: {
+                    name: 'Chakra Sacro (Svadhisthana)',
+                    description: 'Creatividad, sexualidad y bienestar emocional. Ubicado debajo del ombligo.',
+                    symbol: 'VAM',
+                    color: '#FF8C00'
+                },
+                root: {
+                    name: 'Chakra Raíz (Muladhara)',
+                    description: 'Conexión a tierra, estabilidad e instintos de supervivencia. Ubicado en la base de la columna.',
+                    symbol: 'LAM',
+                    color: '#FF0000'
+                }
+            };
+
+            chakraPoints.forEach(point => {
+                const chakraKey = point.getAttribute('data-chakra');
+                const data = chakraInfoData[chakraKey];
+
+                // Hover effects
+                point.addEventListener('mouseenter', () => {
+                    // Show info
+                    chakraInfo.classList.remove('hidden');
+                    chakraName.textContent = data.name;
+                    chakraDescription.textContent = data.description;
+                    chakraSymbol.textContent = data.symbol;
+                    chakraSymbol.style.color = data.color;
+
+                    // Enhanced glow effect
+                    point.style.filter = `drop-shadow(0 0 20px ${data.color})`;
+                    point.style.opacity = '1';
+                });
+
+                point.addEventListener('mouseleave', () => {
+                    // Reset glow
+                    point.style.filter = `drop-shadow(0 0 8px ${data.color})`;
+                    point.style.opacity = '0.8';
+                });
+
+                // Click to scroll to detailed card
+                point.addEventListener('click', () => {
+                    // Find the corresponding chakra card
+                    const chakraCard = document.querySelector(`.chakra-card:has(.text-sanskrit-3xl[aria-label*="${chakraKey}"])`);
+                    if (chakraCard) {
+                        chakraCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight the card temporarily
+                        chakraCard.style.transform = 'scale(1.02)';
+                        chakraCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                        
+                        setTimeout(() => {
+                            chakraCard.style.transform = '';
+                            chakraCard.style.boxShadow = '';
+                        }, 2000);
+                    }
+                });
+            });
+
+            // Hide info when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.chakra-point') && !e.target.closest('#chakraInfo')) {
+                    chakraInfo.classList.add('hidden');
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setupBodyMap();
+        });
 
         // Chakra Test Data
         const chakraTestQuestions = [
