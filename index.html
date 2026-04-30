@@ -152,9 +152,195 @@
         .throat-bg { background: linear-gradient(135deg, #0000FF, #4169E1); }
         .third-eye-bg { background: linear-gradient(135deg, #4B0082, #8A2BE2); }
         .crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Rainbow Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #FF0000 0%, 
+                #FF8C00 14.28%, 
+                #FFD700 28.57%, 
+                #00FF00 42.86%, 
+                #0000FF 57.14%, 
+                #4B0082 71.43%, 
+                #8B00FF 85.71%, 
+                #8B00FF 100%);
+            z-index: 9999;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 8px rgba(139, 0, 255, 0.4);
+        }
+
+        /* Animated Mesh Gradient Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(139, 0, 255, 0.1) 0%, 
+                rgba(75, 0, 130, 0.05) 25%, 
+                rgba(0, 0, 255, 0.1) 50%, 
+                rgba(0, 255, 0, 0.05) 75%, 
+                rgba(255, 215, 0, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: meshGradient 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes meshGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* Energy Ripple Effect */
+        .energy-ripple {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            animation: ripple 1.5s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+                transform: translate(-30px, -30px);
+            }
+        }
+
+        /* Sacred Geometry Background */
+        .sacred-geometry {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            opacity: 0.03;
+            animation: rotateGeometry 60s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGeometry {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Enhanced Chakra Cards */
+        .chakra-card {
+            transition: all 0.3s ease;
+        }
+
+        .chakra-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Enhanced Modal */
+        .modal-enhanced {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark .modal-enhanced {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
+    <!-- Rainbow Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Sacred Geometry Background -->
+    <svg class="sacred-geometry" viewBox="0 0 800 800">
+        <defs>
+            <pattern id="flowerOfLife" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                <circle cx="25" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                <circle cx="75" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                <circle cx="50" cy="25" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                <circle cx="50" cy="75" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+            </pattern>
+        </defs>
+        <rect width="800" height="800" fill="url(#flowerOfLife)"/>
+        <!-- Metatron's Cube overlay -->
+        <g transform="translate(400, 400)">
+            <circle cx="0" cy="0" r="100" fill="none" stroke="currentColor" stroke-width="0.5"/>
+            <circle cx="0" cy="0" r="200" fill="none" stroke="currentColor" stroke-width="0.5"/>
+            <circle cx="0" cy="0" r="300" fill="none" stroke="currentColor" stroke-width="0.5"/>
+            <!-- Hexagon -->
+            <polygon points="100,0 50,86.6 -50,86.6 -100,0 -50,-86.6 50,-86.6" fill="none" stroke="currentColor" stroke-width="0.5"/>
+        </g>
+    </svg>
+    
     <!-- Header Ad Banner -->
     <div class="w-full bg-gray-100 py-2 text-center">
         <ins class="adsbygoogle"
@@ -294,8 +480,8 @@
             </div>
 
             <!-- Interactive Body Map -->
-            <div class="mb-16">
-                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
+            <div class="mb-16 reveal">
+                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8 glass">
                     <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8">Interactive Chakra Body Map</h3>
                     <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Hover over or click the chakra points to explore each energy center</p>
                     
@@ -403,7 +589,7 @@
 
             <div class="space-y-12">
                 <!-- Root Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -446,7 +632,7 @@
                 </div>
 
                 <!-- Sacral Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -489,7 +675,7 @@
                 </div>
 
                 <!-- Solar Plexus Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -532,7 +718,7 @@
                 </div>
 
                 <!-- Heart Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -575,7 +761,7 @@
                 </div>
 
                 <!-- Throat Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -618,7 +804,7 @@
                 </div>
 
                 <!-- Third Eye Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -661,7 +847,7 @@
                 </div>
 
                 <!-- Crown Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -906,7 +1092,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Root Chakra -->
-                <div onclick="openMeditationModal('root')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="root.mp3">
+                <div onclick="openMeditationModal('root')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="root.mp3">
                     <div class="root-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Root Chakra Sanskrit Symbol - LAM">लं</span>
                     </div>
@@ -920,7 +1106,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Sacral Chakra -->
-                <div onclick="openMeditationModal('sacral')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="sacral.mp3">
+                <div onclick="openMeditationModal('sacral')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="sacral.mp3">
                     <div class="sacral-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Sacral Chakra Sanskrit Symbol - VAM">वं</span>
                     </div>
@@ -934,7 +1120,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Solar Plexus Chakra -->
-                <div onclick="openMeditationModal('solar')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="solar.mp3">
+                <div onclick="openMeditationModal('solar')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="solar.mp3">
                     <div class="solar-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Solar Plexus Sanskrit Symbol - RAM">रं</span>
                     </div>
@@ -948,7 +1134,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Heart Chakra -->
-                <div onclick="openMeditationModal('heart')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="heart.mp3">
+                <div onclick="openMeditationModal('heart')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="heart.mp3">
                     <div class="heart-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Heart Chakra Sanskrit Symbol - YAM">यं</span>
                     </div>
@@ -962,7 +1148,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Throat Chakra -->
-                <div onclick="openMeditationModal('throat')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="throat.mp3">
+                <div onclick="openMeditationModal('throat')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="throat.mp3">
                     <div class="throat-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Throat Chakra Sanskrit Symbol - HAM">हं</span>
                     </div>
@@ -976,7 +1162,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Third Eye Chakra -->
-                <div onclick="openMeditationModal('third-eye')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="third-eye.mp3">
+                <div onclick="openMeditationModal('third-eye')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="third-eye.mp3">
                     <div class="third-eye-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Third Eye Chakra Sanskrit Symbol - OM">ॐ</span>
                     </div>
@@ -990,7 +1176,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Crown Chakra -->
-                <div onclick="openMeditationModal('crown')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="crown.mp3">
+                <div onclick="openMeditationModal('crown')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="crown.mp3">
                     <div class="crown-bg w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Crown Chakra Sanskrit Symbol - AUM">ॐ</span>
                     </div>
@@ -1004,7 +1190,7 @@
                     <p class="text-purple-600 text-sm font-medium mt-3 text-center">Click to start meditation</p>
                 </div>
                 <!-- Full System Balance -->
-                <div onclick="openMeditationModal('full')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" data-audio-file="full.mp3">
+                <div onclick="openMeditationModal('full')" class="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer glass" data-audio-file="full.mp3">
                     <div class="chakra-gradient w-full h-20 rounded-lg mb-4 flex items-center justify-center">
                         <span class="text-sanskrit-lg font-bold text-white sm:text-sanskrit-xl" style="font-family: 'Noto Sans Devanagari', sans-serif;" aria-label="Full Balance Sanskrit Symbol - SO-HAM">सो-हं</span>
                     </div>
@@ -1918,11 +2104,222 @@
             });
         }
 
-        // Initialize on page load
+        // Scroll Reveal Animations
+        function setupScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            reveals.forEach(reveal => {
+                revealObserver.observe(reveal);
+            });
+        }
+
+        // Rainbow Progress Bar
+        function setupProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            updateProgress();
+        }
+
+        // Enhanced Body Map with Energy Ripples
+        function setupEnhancedBodyMap() {
+            const chakraPoints = document.querySelectorAll('.chakra-point');
+            const chakraInfo = document.getElementById('chakraInfo');
+            const chakraName = document.getElementById('chakraName');
+            const chakraDescription = document.getElementById('chakraDescription');
+            const chakraSymbol = document.getElementById('chakraSymbol');
+
+            const chakraInfoData = {
+                crown: {
+                    name: 'Crown Chakra (Sahasrara)',
+                    description: 'Spiritual connection, enlightenment, and cosmic consciousness. Located at the top of the head.',
+                    symbol: 'AUM',
+                    color: '#8B00FF'
+                },
+                'third-eye': {
+                    name: 'Third Eye Chakra (Ajna)',
+                    description: 'Intuition, insight, and psychic abilities. Located between the eyebrows.',
+                    symbol: 'OM',
+                    color: '#4B0082'
+                },
+                throat: {
+                    name: 'Throat Chakra (Vishuddha)',
+                    description: 'Communication, expression, and truth. Located at the throat.',
+                    symbol: 'HAM',
+                    color: '#0000FF'
+                },
+                heart: {
+                    name: 'Heart Chakra (Anahata)',
+                    description: 'Love, compassion, and emotional balance. Located at the center of the chest.',
+                    symbol: 'YAM',
+                    color: '#00FF00'
+                },
+                solar: {
+                    name: 'Solar Plexus (Manipura)',
+                    description: 'Personal power, confidence, and transformation. Located in the upper abdomen.',
+                    symbol: 'RAM',
+                    color: '#FFD700'
+                },
+                sacral: {
+                    name: 'Sacral Chakra (Svadhisthana)',
+                    description: 'Creativity, sexuality, and emotional well-being. Located below the navel.',
+                    symbol: 'VAM',
+                    color: '#FF8C00'
+                },
+                root: {
+                    name: 'Root Chakra (Muladhara)',
+                    description: 'Grounding, stability, and survival instincts. Located at the base of the spine.',
+                    symbol: 'LAM',
+                    color: '#FF0000'
+                }
+            };
+
+            chakraPoints.forEach(point => {
+                const chakraKey = point.getAttribute('data-chakra');
+                const data = chakraInfoData[chakraKey];
+
+                // Hover effects with energy ripple
+                point.addEventListener('mouseenter', (e) => {
+                    // Show info
+                    chakraInfo.classList.remove('hidden');
+                    chakraName.textContent = data.name;
+                    chakraDescription.textContent = data.description;
+                    chakraSymbol.textContent = data.symbol;
+                    chakraSymbol.style.color = data.color;
+
+                    // Enhanced glow effect
+                    point.style.filter = `drop-shadow(0 0 20px ${data.color})`;
+                    point.style.opacity = '1';
+
+                    // Create energy ripple
+                    createEnergyRipple(e.target, data.color);
+                });
+
+                point.addEventListener('mouseleave', () => {
+                    // Reset glow
+                    point.style.filter = `drop-shadow(0 0 8px ${data.color})`;
+                    point.style.opacity = '0.8';
+                });
+
+                // Click to scroll to detailed card with Nadi line
+                point.addEventListener('click', (e) => {
+                    // Find the corresponding chakra card
+                    const chakraCard = document.querySelector(`.chakra-card:has(.text-sanskrit-3xl[aria-label*="${chakraKey}"])`);
+                    if (chakraCard) {
+                        // Create Nadi line connection
+                        createNadiLine(e.target, chakraCard, data.color);
+                        
+                        // Scroll to card
+                        chakraCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight the card temporarily
+                        chakraCard.style.transform = 'scale(1.02)';
+                        chakraCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                        
+                        setTimeout(() => {
+                            chakraCard.style.transform = '';
+                            chakraCard.style.boxShadow = '';
+                        }, 2000);
+                    }
+                });
+            });
+
+            // Hide info when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.chakra-point') && !e.target.closest('#chakraInfo')) {
+                    chakraInfo.classList.add('hidden');
+                }
+            });
+        }
+
+        // Create energy ripple effect
+        function createEnergyRipple(element, color) {
+            const ripple = document.createElement('div');
+            ripple.className = 'energy-ripple';
+            ripple.style.color = color;
+            
+            const rect = element.getBoundingClientRect();
+            ripple.style.left = rect.left + rect.width / 2 + 'px';
+            ripple.style.top = rect.top + rect.height / 2 + 'px';
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 1500);
+        }
+
+        // Create Nadi line connection
+        function createNadiLine(fromElement, toElement, color) {
+            const line = document.createElement('div');
+            line.style.position = 'fixed';
+            line.style.background = color;
+            line.style.height = '2px';
+            line.style.transformOrigin = 'left center';
+            line.style.zIndex = '1000';
+            line.style.boxShadow = `0 0 10px ${color}`;
+            line.style.transition = 'all 0.5s ease-out';
+            line.style.opacity = '0';
+            
+            document.body.appendChild(line);
+            
+            // Calculate positions
+            const fromRect = fromElement.getBoundingClientRect();
+            const toRect = toElement.getBoundingClientRect();
+            
+            const fromX = fromRect.left + fromRect.width / 2;
+            const fromY = fromRect.top + fromRect.height / 2;
+            const toX = toRect.left + toRect.width / 2;
+            const toY = toRect.top + toRect.height / 2;
+            
+            const distance = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+            const angle = Math.atan2(toY - fromY, toX - fromX) * 180 / Math.PI;
+            
+            line.style.width = distance + 'px';
+            line.style.left = fromX + 'px';
+            line.style.top = fromY + 'px';
+            line.style.transform = `rotate(${angle}deg)`;
+            
+            // Animate in
+            setTimeout(() => {
+                line.style.opacity = '0.8';
+            }, 100);
+            
+            // Remove after animation
+            setTimeout(() => {
+                line.style.opacity = '0';
+                setTimeout(() => {
+                    line.remove();
+                }, 500);
+            }, 2000);
+        }
+
+        // Initialize all features on page load
         document.addEventListener('DOMContentLoaded', () => {
             setupActiveNav();
             setupMobileMenu();
             setupBodyMap();
+            setupScrollReveal();
+            setupProgressBar();
+            setupEnhancedBodyMap();
         });
 
         // Smooth scrolling for navigation links
@@ -1940,13 +2337,12 @@
         });
     </script>
 <!-- Meditation Modal -->
-    <div id="meditationModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-dark-card rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
-            <button onclick="closeMeditationModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+    <div id="meditationModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-dark-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative modal-enhanced">
+            <button onclick="closeMeditationModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                 <i class="fas fa-times text-xl"></i>
             </button>
-            
-            <div id="meditationContent" class="text-center">
+            <div class="p-8" id="meditationContent">
                 <!-- Content will be dynamically inserted -->
             </div>
         </div>
