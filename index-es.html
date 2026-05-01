@@ -10,8 +10,8 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Enciclopedia de Chakras - Guía Completa de los 7 Chakras">
     <meta property="og:description" content="Explora el sistema completo de chakras con gráficos hermosos, información detallada y técnicas de sanación.">
-    <meta property="og:image" content="https://example.com/chakra-encyclopedia-og.jpg">
-    <meta property="og:url" content="https://example.com">
+    <meta property="og:image" content="<!-- TODO: add real preview image URL -->">
+    <meta property="og:url" content="https://bingleyj.github.io/chakra-encyclopedia/index-es.html">
     <meta property="og:type" content="website">
     
     <!-- Hreflang Tags for SEO -->
@@ -58,9 +58,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR-PUBLISHER-ID"
-            crossorigin="anonymous"></script>
+    <!-- TODO: AdSense slots go here when account is approved -->
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -85,14 +83,7 @@
     }
     </script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA-MEASUREMENT-ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA-MEASUREMENT-ID');
-    </script>
+    <!-- TODO: add real GA4 measurement ID -->
     
     <style>
         :root {
@@ -168,18 +159,9 @@
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
-    <!-- Header Ad Banner -->
-    <div class="w-full bg-gray-100 py-2 text-center">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-YOUR-PUBLISHER-ID"
-             data-ad-slot="HEADER-AD-SLOT-ID"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
+    <div id="scrollProgress" style="position:fixed;top:0;left:0;height:4px;width:0%;z-index:9999;background:linear-gradient(90deg,#FF0000,#FF8C00,#FFD700,#00FF00,#0000FF,#4B0082,#8B00FF);transition:width 0.1s;"></div>
+    
+    <!-- TODO: AdSense header banner goes here when account is approved -->
     
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-md shadow-sm z-50">
@@ -1824,6 +1806,13 @@
                     });
                 }
             });
+        });
+    </script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = pct + '%';
         });
     </script>
 </body>
