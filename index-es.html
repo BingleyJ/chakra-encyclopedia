@@ -58,9 +58,30 @@
     
     <!-- TODO: add real GA4 measurement ID -->
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1a1a2e',
+                        'dark-card': '#16213e',
+                        'dark-text': '#e0e0e0',
+                        'dark-border': '#2a2a2a',
+                        'root': '#FF0000',
+                        'sacral': '#FF8C00',
+                        'solar': '#FFD700',
+                        'heart': '#00FF00',
+                        'throat': '#0000FF',
+                        'third-eye': '#4B0082',
+                        'crown': '#8B00FF'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
     <div id="scrollProgress" style="position:fixed;top:0;left:0;height:4px;width:0%;z-index:9999;background:linear-gradient(90deg,#FF0000,#FF8C00,#FFD700,#00FF00,#0000FF,#4B0082,#8B00FF);transition:width 0.1s;"></div>
@@ -3553,5 +3574,6 @@
             document.getElementById('scrollProgress').style.width = pct + '%';
         });
     </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
