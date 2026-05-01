@@ -385,3 +385,277 @@ input:focus {
         opacity: 0.8;
     }
 }
+
+/* Inline styles extracted from index.html */
+:root {
+    --root-color: #FF0000;
+    --sacral-color: #FF8C00;
+    --solar-color: #FFD700;
+    --heart-color: #00FF00;
+    --throat-color: #0000FF;
+    --third-eye-color: #4B0082;
+    --crown-color: #8B00FF;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.heading-font {
+    font-family: 'Playfair Display', serif;
+}
+
+.chakra-gradient {
+    background: linear-gradient(135deg, var(--root-color), var(--sacral-color), var(--solar-color), var(--heart-color), var(--throat-color), var(--third-eye-color), var(--crown-color));
+}
+
+.chakra-card {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.chakra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.chakra-symbol {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.chakra-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.root-bg { background: linear-gradient(135deg, #FF0000, #FF6B6B); }
+.sacral-bg { background: linear-gradient(135deg, #FF8C00, #FFA500); }
+.solar-bg { background: linear-gradient(135deg, #FFD700, #FFED4E); }
+.heart-bg { background: linear-gradient(135deg, #00FF00, #90EE90); }
+.throat-bg { background: linear-gradient(135deg, #0000FF, #4169E1); }
+.third-eye-bg { background: linear-gradient(135deg, #4B0082, #8A2BE2); }
+.crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Rainbow Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #FF0000 0%, 
+        #FF8C00 14.28%, 
+        #FFD700 28.57%, 
+        #00FF00 42.86%, 
+        #0000FF 57.14%, 
+        #4B0082 71.43%, 
+        #8B00FF 85.71%, 
+        #8B00FF 100%);
+    z-index: 9999;
+    transition: width 0.3s ease;
+    box-shadow: 0 2px 8px rgba(139, 0, 255, 0.4);
+}
+
+/* Animated Mesh Gradient Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(139, 0, 255, 0.1) 0%, 
+        rgba(75, 0, 130, 0.05) 25%, 
+        rgba(0, 0, 255, 0.1) 50%, 
+        rgba(0, 255, 0, 0.05) 75%, 
+        rgba(255, 215, 0, 0.1) 100%);
+    background-size: 400% 400%;
+    animation: meshGradient 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes meshGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Effects */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Text legibility enhancements for glassmorphism */
+.glass h1, .glass h2, .glass h3, .glass h4,
+.glass p, .glass span, .glass li {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass h1, .dark .glass h2, .dark .glass h3, .dark .glass h4,
+.dark .glass p, .dark .glass span, .dark .glass li {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Energy Ripple Effect */
+.energy-ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    animation: ripple 1.5s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+        transform: translate(-30px, -30px);
+    }
+}
+
+/* Sacred Geometry Background */
+.sacred-geometry {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    opacity: 0.03;
+    animation: rotateGeometry 60s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@keyframes rotateGeometry {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Enhanced Chakra Cards */
+.chakra-card {
+    transition: all 0.3s ease;
+}
+
+.chakra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Modal */
+.modal-enhanced {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.dark .modal-enhanced {
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Silhouette pulse animation */
+@keyframes silhouettePulse {
+    0%, 100% { 
+        opacity: 0.1; 
+        stroke-width: 1.5;
+    }
+    50% { 
+        opacity: 0.2; 
+        stroke-width: 2;
+    }
+}
+
+/* Mobile chakra button enhancements */
+.chakra-mobile-btn {
+    min-height: 60px; /* Ensure touch targets are at least 44px */
+    touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+.chakra-mobile-btn:active {
+    transform: scale(0.98);
+}
+
+/* Dynamic Learn More button hover effect */
+#learnMoreBtn:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+}
+
+/* Stable mobile viewport height */
+@supports (height: 100dvh) {
+    .mobile-stable-height {
+        height: 100dvh;
+    }
+}
+
+@supports not (height: 100dvh) {
+    .mobile-stable-height {
+        height: 100vh;
+    }
+}

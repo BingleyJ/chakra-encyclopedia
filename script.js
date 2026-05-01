@@ -1,5 +1,84 @@
 // Chakra Encyclopedia JavaScript
 
+// Tailwind Configuration
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                dark: {
+                    bg: '#0f0f0f',
+                    card: '#1a1a1a',
+                    text: '#e0e0e0',
+                    border: '#2a2a2a'
+                }
+            },
+            fontSize: {
+                'sanskrit-xs': ['1.125rem', { lineHeight: '1.75' }],
+                'sanskrit-sm': ['1.25rem', { lineHeight: '1.75' }],
+                'sanskrit-base': ['1.5rem', { lineHeight: '1.75' }],
+                'sanskrit-lg': ['2.25rem', { lineHeight: '1.75' }],
+                'sanskrit-xl': ['3rem', { lineHeight: '1.75' }],
+                'sanskrit-2xl': ['3.75rem', { lineHeight: '1.75' }],
+                'sanskrit-3xl': ['4.5rem', { lineHeight: '1.75' }],
+                'sanskrit-4xl': ['6rem', { lineHeight: '1.75' }]
+            }
+        }
+    }
+};
+
+// Language detection and redirect
+(function() {
+    // Only redirect if coming from the root or no language preference is set
+    if (!window.location.pathname.includes('index-es.html')) {
+        var userLang = navigator.language || navigator.userLanguage;
+        var hasVisited = localStorage.getItem('chakra-lang-visited');
+        
+        // If first visit and user prefers Spanish, redirect to Spanish
+        if (!hasVisited && userLang.startsWith('es')) {
+            localStorage.setItem('chakra-lang-visited', 'true');
+            window.location.href = 'index-es.html';
+            return;
+        }
+        
+        // Mark as visited
+        localStorage.setItem('chakra-lang-visited', 'true');
+    }
+})();
+
+// Dark mode functionality
+function toggleDarkMode() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+    
+    if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+        if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+    } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+        if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+}
+
+// Initialize dark mode based on system preference or saved preference
+(function() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const themeIcon = document.getElementById('themeIcon');
+    const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+        if (mobileThemeIcon) mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+})();
+
 // Mobile menu toggle
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
