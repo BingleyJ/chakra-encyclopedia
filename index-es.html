@@ -24,33 +24,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: {
-                            bg: '#0f0f0f',
-                            card: '#1a1a1a',
-                            text: '#e0e0e0',
-                            border: '#2a2a2a'
-                        }
-                    },
-                    fontSize: {
-                        'sanskrit-xs': ['1.125rem', { lineHeight: '1.75' }],
-                        'sanskrit-sm': ['1.25rem', { lineHeight: '1.75' }],
-                        'sanskrit-base': ['1.5rem', { lineHeight: '1.75' }],
-                        'sanskrit-lg': ['2.25rem', { lineHeight: '1.75' }],
-                        'sanskrit-xl': ['3rem', { lineHeight: '1.75' }],
-                        'sanskrit-2xl': ['3.75rem', { lineHeight: '1.75' }],
-                        'sanskrit-3xl': ['4.5rem', { lineHeight: '1.75' }],
-                        'sanskrit-4xl': ['6rem', { lineHeight: '1.75' }]
-                    }
-                }
-            }
-        }
-    </script>
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -85,78 +58,8 @@
     
     <!-- TODO: add real GA4 measurement ID -->
     
-    <style>
-        :root {
-            --root-color: #FF0000;
-            --sacral-color: #FF8C00;
-            --solar-color: #FFD700;
-            --heart-color: #00FF00;
-            --throat-color: #0000FF;
-            --third-eye-color: #4B0082;
-            --crown-color: #8B00FF;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .heading-font {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .chakra-gradient {
-            background: linear-gradient(135deg, var(--root-color), var(--sacral-color), var(--solar-color), var(--heart-color), var(--throat-color), var(--third-eye-color), var(--crown-color));
-        }
-        
-        .chakra-card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .chakra-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .chakra-symbol {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .chakra-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .root-bg { background: linear-gradient(135deg, #FF0000, #FF6B6B); }
-        .sacral-bg { background: linear-gradient(135deg, #FF8C00, #FFA500); }
-        .solar-bg { background: linear-gradient(135deg, #FFD700, #FFED4E); }
-        .heart-bg { background: linear-gradient(135deg, #00FF00, #90EE90); }
-        .throat-bg { background: linear-gradient(135deg, #0000FF, #4169E1); }
-        .third-eye-bg { background: linear-gradient(135deg, #4B0082, #8A2BE2); }
-        .crown-bg { background: linear-gradient(135deg, #8B00FF, #DA70D6); }
-
-        /* Stable mobile viewport height */
-        @supports (height: 100dvh) {
-            .mobile-stable-height {
-                height: 100dvh;
-            }
-        }
-        
-        @supports not (height: 100dvh) {
-            .mobile-stable-height {
-                height: 100vh;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300">
     <div id="scrollProgress" style="position:fixed;top:0;left:0;height:4px;width:0%;z-index:9999;background:linear-gradient(90deg,#FF0000,#FF8C00,#FFD700,#00FF00,#0000FF,#4B0082,#8B00FF);transition:width 0.1s;"></div>

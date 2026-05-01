@@ -483,6 +483,325 @@ document.addEventListener('DOMContentLoaded', () => {
 window.ChakraEncyclopedia = {
     startChakraTest,
     closeChakraTest,
+    showChakraInfo,
+    openMeditationModal,
+    closeMeditationModal,
+    playChakraFrequency,
+    stopChakraFrequency,
+    updateFrequencyVisualizer,
+    togglePrintMode
+};
+
+// Show Chakra Info function for interactive body map
+function showChakraInfo(chakra) {
+    const chakraInfo = document.getElementById('chakraInfo');
+    const chakraName = document.getElementById('chakraName');
+    const chakraDescription = document.getElementById('chakraDescription');
+    const chakraSymbol = document.getElementById('chakraSymbol');
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+
+    const chakraInfoData = {
+        crown: {
+            name: 'Crown Chakra (Sahasrara)',
+            description: 'Spiritual connection, enlightenment, and cosmic consciousness. Located at the top of the head.',
+            symbol: '✦',
+            color: '#8B00FF'
+        },
+        'third-eye': {
+            name: 'Third Eye Chakra (Ajna)',
+            description: 'Intuition, insight, and psychic abilities. Located between the eyebrows.',
+            symbol: 'ॐ',
+            color: '#4B0082'
+        },
+        throat: {
+            name: 'Throat Chakra (Vishuddha)',
+            description: 'Communication, expression, and truth. Located at the throat.',
+            symbol: 'हं',
+            color: '#0000FF'
+        },
+        heart: {
+            name: 'Heart Chakra (Anahata)',
+            description: 'Love, compassion, and emotional balance. Located at the center of the chest.',
+            symbol: 'यं',
+            color: '#00FF00'
+        },
+        solar: {
+            name: 'Solar Plexus (Manipura)',
+            description: 'Personal power, confidence, and transformation. Located in the upper abdomen.',
+            symbol: 'रं',
+            color: '#FFD700'
+        },
+        sacral: {
+            name: 'Sacral Chakra (Svadhisthana)',
+            description: 'Creativity, sexuality, and emotional well-being. Located below the navel.',
+            symbol: 'वं',
+            color: '#FF8C00'
+        },
+        root: {
+            name: 'Root Chakra (Muladhara)',
+            description: 'Grounding, stability, and survival instincts. Located at the base of the spine.',
+            symbol: 'लं',
+            color: '#FF0000'
+        }
+    };
+
+    const data = chakraInfoData[chakra];
+    if (data) {
+        // Show info
+        chakraInfo.classList.remove('hidden');
+        chakraName.textContent = data.name;
+        chakraDescription.textContent = data.description;
+        chakraSymbol.textContent = data.symbol;
+        chakraSymbol.style.color = data.color;
+        learnMoreBtn.setAttribute('data-chakra', chakra);
+        learnMoreBtn.style.backgroundColor = data.color;
+    }
+}
+
+// Meditation modal functions
+function openMeditationModal(chakra) {
+    const modal = document.getElementById('meditationModal');
+    const content = document.getElementById('meditationContent');
+    
+    const meditationData = {
+        root: {
+            title: 'Root Chakra Meditation',
+            mantra: 'लं (LAM)',
+            visualization: 'Red sphere at base of spine, roots extending into earth',
+            breathwork: '4-4-4 breathing (inhale 4, hold 4, exhale 4)'
+        },
+        sacral: {
+            title: 'Sacral Chakra Meditation',
+            mantra: 'वं (VAM)',
+            visualization: 'Orange water flowing through pelvis',
+            breathwork: '4-7-8 breathing (inhale 4, hold 7, exhale 8)'
+        },
+        solar: {
+            title: 'Solar Plexus Meditation',
+            mantra: 'रं (RAM)',
+            visualization: 'Golden sun in upper abdomen',
+            breathwork: 'Rapid exhales with breath of fire'
+        },
+        heart: {
+            title: 'Heart Chakra Meditation',
+            mantra: 'यं (YAM)',
+            visualization: 'Green light expanding from chest',
+            breathwork: '4-7-8 breathing (inhale 4, hold 7, exhale 8)'
+        },
+        throat: {
+            title: 'Throat Chakra Meditation',
+            mantra: 'हं (HAM)',
+            visualization: 'Blue light flowing from throat',
+            breathwork: 'Alternate nostril breathing'
+        },
+        'third-eye': {
+            title: 'Third Eye Meditation',
+            mantra: 'ॐ (OM)',
+            visualization: 'Indigo flame between eyebrows',
+            breathwork: '2:1 ratio breathing (exhale twice as long as inhale)'
+        },
+        crown: {
+            title: 'Crown Chakra Meditation',
+            mantra: '✦ (Silence)',
+            visualization: 'Violet light streaming upward from crown',
+            breathwork: 'Natural breathing with focus on crown'
+        }
+    };
+
+    const data = meditationData[chakra];
+    if (data) {
+        content.innerHTML = `
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">${data.title}</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold">Mantra:</h4>
+                        <p class="text-lg">${data.mantra}</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Visualization:</h4>
+                        <p>${data.visualization}</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Breathwork:</h4>
+                        <p>${data.breathwork}</p>
+                    </div>
+                </div>
+                <button onclick="closeMeditationModal()" class="mt-6 bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                    Close
+                </button>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeMeditationModal() {
+    const modal = document.getElementById('meditationModal');
+    modal.classList.add('hidden');
+}
+
+// Web Audio API frequency functions
+let audioContext = null;
+let currentOscillator = null;
+let currentGainNode = null;
+
+function playChakraFrequency(frequency, chakra) {
+    // Stop any currently playing frequency
+    stopChakraFrequency();
+    
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    
+    // Create oscillator and gain nodes
+    currentOscillator = audioContext.createOscillator();
+    currentGainNode = audioContext.createGain();
+    
+    // Configure oscillator
+    currentOscillator.type = 'sine';
+    currentOscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+    
+    // Configure gain (volume) with fade in/out
+    currentGainNode.gain.setValueAtTime(0, audioContext.currentTime);
+    currentGainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.1);
+    currentGainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 3);
+    
+    // Connect nodes
+    currentOscillator.connect(currentGainNode);
+    currentGainNode.connect(audioContext.destination);
+    
+    // Start and schedule stop
+    currentOscillator.start(audioContext.currentTime);
+    currentOscillator.stop(audioContext.currentTime + 3);
+    
+    // Update visualizer
+    updateFrequencyVisualizer(frequency, chakra);
+    
+    // Auto-stop cleanup
+    setTimeout(() => {
+        stopChakraFrequency();
+    }, 3000);
+}
+
+function stopChakraFrequency() {
+    if (currentOscillator) {
+        try {
+            currentOscillator.stop();
+        } catch (e) {
+            // Oscillator already stopped
+        }
+        currentOscillator = null;
+    }
+    if (currentGainNode) {
+        currentGainNode = null;
+    }
+}
+
+function updateFrequencyVisualizer(frequency, chakra) {
+    const visualizer = document.getElementById('frequency-visualizer');
+    if (!visualizer) return;
+    
+    const colors = {
+        root: '#ef4444',
+        sacral: '#f97316',
+        solar: '#eab308',
+        heart: '#22c55e',
+        throat: '#3b82f6',
+        'third-eye': '#6366f1',
+        crown: '#a855f7'
+    };
+    
+    const color = colors[chakra] || '#8b5cf6';
+    
+    // Create visual representation of the frequency
+    visualizer.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full animate-pulse" style="background-color: ${color}"></div>
+            </div>
+            <div class="text-center">
+                <div class="text-lg font-bold" style="color: ${color}">${chakra.charAt(0).toUpperCase() + chakra.slice(1).replace('-', ' ')}</div>
+                <div class="text-sm font-mono" style="color: ${color}">${frequency} Hz</div>
+                <div class="text-xs text-gray-500 mt-1">Playing...</div>
+            </div>
+        </div>
+    `;
+    
+    // Clear visualizer after sound stops
+    setTimeout(() => {
+        if (visualizer.innerHTML.includes('Playing...')) {
+            visualizer.innerHTML = '<span class="text-sm text-gray-500 dark:text-gray-400">Click a chakra to visualize its frequency</span>';
+        }
+    }, 3000);
+}
+
+// Print functionality
+function togglePrintMode() {
+    const body = document.body;
+    const journalSection = document.getElementById('journaling');
+    
+    if (body.classList.contains('print-mode')) {
+        body.classList.remove('print-mode');
+        // Restore original styles
+        document.querySelectorAll('.print-mode .bg-white').forEach(el => {
+            el.classList.remove('bg-white', 'dark:bg-dark-card');
+            el.classList.add('bg-white');
+        });
+    } else {
+        body.classList.add('print-mode');
+        // Apply print-friendly styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .print-mode { background: white !important; color: black !important; }
+            .print-mode .bg-white, .print-mode .dark\\:bg-dark-card { 
+                background: white !important; 
+                color: black !important;
+                border: 1px solid #ccc !important;
+                margin: 20px auto !important;
+                padding: 20px !important;
+                max-width: 800px !important;
+            }
+            .print-mode .text-gray-600, .print-mode .text-gray-300,
+            .print-mode .text-purple-600, .print-mode .text-purple-400,
+            .print-mode .text-red-600, .print-mode .text-red-400,
+            .print-mode .text-orange-600, .print-mode .text-orange-400,
+            .print-mode .text-yellow-600, .print-mode .text-yellow-400,
+            .print-mode .text-green-600, .print-mode .text-green-400,
+            .print-mode .text-blue-600, .print-mode .text-blue-400,
+            .print-mode .text-indigo-600, .print-mode .text-indigo-400,
+            .print-mode .text-purple-600, .print-mode .text-purple-400 {
+                color: black !important;
+            }
+            .print-mode .text-gray-800, .print-mode .text-dark-text {
+                color: black !important;
+            }
+            .print-mode .shadow-md, .print-mode .hover\\:shadow-lg {
+                box-shadow: none !important;
+            }
+            .print-mode .glass {
+                background: white !important;
+                backdrop-filter: none !important;
+            }
+            @media print {
+                .print-mode button { display: none !important; }
+                .print-mode .grid { display: block !important; }
+                .print-mode .grid > div { margin-bottom: 30px !important; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Scroll to journaling section
+        if (journalSection) {
+            journalSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Show print dialog after a short delay
+        setTimeout(() => {
+            window.print();
+        }, 1000);
+    }
+}
     playMeditation,
     shareOnSocial,
     searchChakras,
