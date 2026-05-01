@@ -6,14 +6,22 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                dark: {
-                    bg: '#0f0f0f',
-                    card: '#1a1a1a',
-                    text: '#e0e0e0',
-                    border: '#2a2a2a'
-                }
-            },
-            fontSize: {
+                // Dark theme colors
+                'dark-bg': '#1a1a2e',
+                'dark-card': '#16213e',
+                'dark-text': '#e0e0e0',
+                'dark-border': '#2a2a2a',
+                
+                // Chakra colors
+                'root': '#FF0000',
+                'sacral': '#FF8C00',
+                'solar': '#FFD700',
+                'heart': '#00FF00',
+                'throat': '#0000FF',
+                'third-eye': '#4B0082',
+                'crown': '#8B00FF',
+                
+                // Sanskrit font sizes
                 'sanskrit-xs': ['1.125rem', { lineHeight: '1.75' }],
                 'sanskrit-sm': ['1.25rem', { lineHeight: '1.75' }],
                 'sanskrit-base': ['1.5rem', { lineHeight: '1.75' }],
