@@ -16,7 +16,8 @@
     
     <!-- Hreflang Tags for SEO -->
     <link rel="alternate" hreflang="en" href="https://bingleyj.github.io/chakra-encyclopedia/" />
-    <link rel="alternate" hreflang="es" href="https://bingleyj.github.io/chakra-encyclopedia/index-es.html" />
+    <link rel="alternate" hreflang="es" href="https://bingleyj.github.io/chakra-encyclopedia/" />
+    <script src="translations.js"></script>
     
     <!-- Google Fonts for Sanskrit symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,11 +121,11 @@
                     <h1 class="heading-font text-xl font-bold text-gray-800 dark:text-dark-text">Chakra Encyclopedia</h1>
                 </div>
                 <div class="hidden lg:flex xl:space-x-8 lg:space-x-4 items-center">
-                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Home</a>
-                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">The 7 Chakras</a>
-                    <a href="#history" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">History</a>
-                    <a href="#science" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Science</a>
-                    <a href="#yoga" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Yoga</a>
+                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_home">Home</a>
+                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_chakras">The 7 Chakras</a>
+                    <a href="#history" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_history">History</a>
+                    <a href="#science" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_science">Science</a>
+                    <a href="#yoga" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_yoga">Yoga</a>
                     <a href="#foods" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Nutrition</a>
                     <a href="#aromatherapy" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Aromatherapy</a>
                     <a href="#sound-healing" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Sound</a>
@@ -133,9 +134,9 @@
                     <a href="#traditions" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Traditions</a>
                     <a href="#journaling" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Journaling</a>
                     <a href="#sacred-geometry" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Sacred Geometry</a>
-                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Meditation</a>
-                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">About</a>
-                    <a href="index-es.html" class="text-purple-600 hover:text-purple-700 transition font-semibold text-sm xl:text-base">Español</a>
+                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_meditation">Meditation</a>
+                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base" data-i18n="nav_about">About</a>
+                    <button id="lang-toggle" onclick="setLanguage(document.documentElement.lang === 'en' ? 'es' : 'en')" class="px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 font-medium hover:bg-purple-200 transition-colors" data-i18n="nav_language">Español</button>
                     <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition ml-2 xl:ml-4">
                         <i id="themeIcon" class="fas fa-moon text-lg xl:text-xl"></i>
                     </button>
@@ -176,17 +177,17 @@
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 chakra-gradient opacity-10"></div>
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-[85vw] xl:max-w-4xl mx-auto">
-            <h1 class="heading-font font-bold text-gray-800 dark:text-dark-text mb-6" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+            <h1 class="heading-font font-bold text-gray-800 dark:text-dark-text mb-6" style="font-size: clamp(2rem, 5vw, 3.5rem);" data-i18n="hero_title">
                 Discover Your <span class="chakra-gradient bg-clip-text text-transparent">Energy Centers</span>
             </h1>
-            <p class="text-gray-600 dark:text-gray-300 mb-8" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">
+            <p class="text-gray-600 dark:text-gray-300 mb-8" style="font-size: clamp(1rem, 2.5vw, 1.5rem);" data-i18n="hero_subtitle">
                 Explore the ancient wisdom of the 7 chakras and unlock your spiritual potential
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#chakras" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 dark:hover:bg-purple-500 transition transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <a href="#chakras" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 dark:hover:bg-purple-500 transition transform hover:scale-105 shadow-lg hover:shadow-xl" data-i18n="hero_explore_chakras">
                     Explore Chakras
                 </a>
-                <a href="#balance" class="border-2 border-purple-600 text-purple-600 dark:text-purple-400 dark:border-purple-400 px-8 py-3 rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20 transition transform hover:scale-105">
+                <a href="#balance" class="border-2 border-purple-600 text-purple-600 dark:text-purple-400 dark:border-purple-400 px-8 py-3 rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20 transition transform hover:scale-105" data-i18n="hero_start_assessment">
                     Take Chakra Test
                 </a>
             </div>
@@ -259,8 +260,8 @@
             <!-- Interactive Chakra Column -->
             <div class="mb-16 reveal">
                 <div class="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8 glass">
-                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8">Chakra Energy Centers</h3>
-                    <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Click on each chakra to explore its energy and properties</p>
+                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8" data-i18n="chakra_energy_centers_title">Chakra Energy Centers</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 mb-8" data-i18n="chakra_energy_centers_subtitle">Click on each chakra to explore its energy and properties</p>
                     
                     <!-- Chakra Column Layout -->
                     <div class="flex justify-center items-center gap-8">
@@ -270,7 +271,7 @@
                                 <div class="w-16 h-16 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #8B00FF, #DA70D6);">
                                     <span>✦</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Crown</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_crown">Crown</p>
                             </div>
                             
                             <!-- Third Eye Chakra -->
@@ -278,7 +279,7 @@
                                 <div class="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #4B0082, #8A2BE2);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Third Eye</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_third_eye">Third Eye</p>
                             </div>
                             
                             <!-- Throat Chakra -->
@@ -286,7 +287,7 @@
                                 <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #0000FF, #4169E1);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">हं</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Throat</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_throat">Throat</p>
                             </div>
                             
                             <!-- Heart Chakra -->
@@ -294,7 +295,7 @@
                                 <div class="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #00FF00, #90EE90);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">यं</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Heart</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_heart">Heart</p>
                             </div>
                             
                             <!-- Solar Plexus Chakra -->
@@ -302,7 +303,7 @@
                                 <div class="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FFD700, #FFED4E);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">रं</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Solar Plexus</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_solar_plexus">Solar Plexus</p>
                             </div>
                             
                             <!-- Sacral Chakra -->
@@ -310,7 +311,7 @@
                                 <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF8C00, #FFA500);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">वं</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Sacral</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_sacral">Sacral</p>
                             </div>
                             
                             <!-- Root Chakra -->
@@ -318,7 +319,7 @@
                                 <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF0000, #FF6B6B);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">लं</span>
                                 </div>
-                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Root</p>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300" data-i18n="chakra_root">Root</p>
                             </div>
                         </div>
                         
@@ -330,7 +331,7 @@
                                     <div id="chakraSymbol" class="text-4xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;"></div>
                                 </div>
                                 <p id="chakraDescription" class="text-gray-600 dark:text-gray-300 mb-4"></p>
-                                <button id="learnMoreBtn" class="w-full text-white px-4 py-2 rounded-lg transition" onclick="scrollToChakraCard(this.getAttribute('data-chakra'))">
+                                <button id="learnMoreBtn" class="w-full text-white px-4 py-2 rounded-lg transition" onclick="scrollToChakraCard(this.getAttribute('data-chakra'))" data-i18n="chakra_learn_more">
                                     Learn More
                                 </button>
                             </div>

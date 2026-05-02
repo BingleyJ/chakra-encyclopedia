@@ -35,6 +35,33 @@ tailwind.config = {
     }
 };
 
+// Language switcher functionality
+function setLanguage(lang) {
+    localStorage.setItem('chakra-lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+    // Update nav toggle button text
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+        langToggle.textContent = lang === 'en' ? 'Español' : 'English';
+    }
+}
+
+// Auto-detect on load
+const savedLang = localStorage.getItem('chakra-lang');
+const browserLang = navigator.language.startsWith('es') ? 'es' : 'en';
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+
+// Priority: URL param > saved language > browser language
+const initialLang = urlLang || savedLang || browserLang;
+setLanguage(initialLang);
+
 // Language detection and redirect
 (function() {
     // Only redirect if coming from the root or no language preference is set
