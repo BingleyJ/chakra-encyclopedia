@@ -152,46 +152,162 @@ let testAnswers = {};
 function startChakraTest() {
     currentQuestionIndex = 0;
     testAnswers = {};
-    document.getElementById('chakraTestModal').classList.remove('hidden');
-    showTestQuestion();
+    
+    // Try to find English test elements first
+    const testStart = document.getElementById('testStart');
+    const testQuestions = document.getElementById('testQuestions');
+    
+    if (testStart && testQuestions) {
+        // English version structure
+        testStart.classList.add('hidden');
+        testQuestions.classList.remove('hidden');
+        showTestQuestion();
+    } else {
+        // Try Spanish version structure
+        const chakraTestModal = document.getElementById('chakraTestModal');
+        if (chakraTestModal) {
+            chakraTestModal.classList.remove('hidden');
+            showTestQuestion();
+        }
+    }
 }
 
 function closeChakraTest() {
-    document.getElementById('chakraTestModal').classList.add('hidden');
+    // Try to find English test elements first
+    const testStart = document.getElementById('testStart');
+    const testQuestions = document.getElementById('testQuestions');
+    const testResults = document.getElementById('testResults');
+    
+    if (testStart && testQuestions) {
+        // English version structure
+        testQuestions.classList.add('hidden');
+        testResults.classList.add('hidden');
+        testStart.classList.remove('hidden');
+    } else {
+        // Try Spanish version structure
+        const chakraTestModal = document.getElementById('chakraTestModal');
+        if (chakraTestModal) {
+            chakraTestModal.classList.add('hidden');
+        }
+    }
 }
 
 function showTestQuestion() {
-    const testContent = document.getElementById('testContent');
+    // Try to find English test elements first
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    const progressPercentEl = document.getElementById('progressPercent');
+    const progressBarEl = document.getElementById('progressBar');
+    const questionTextEl = document.getElementById('questionText');
+    const answerOptionsEl = document.getElementById('answerOptions');
     
-    if (currentQuestionIndex < chakraTestQuestions.length) {
-        const question = chakraTestQuestions[currentQuestionIndex];
-        testContent.innerHTML = `
-            <div class="mb-6">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-sm text-gray-500">Question ${currentQuestionIndex + 1} of ${chakraTestQuestions.length}</span>
-                    <div class="w-32 bg-gray-200 rounded-full h-2">
-                        <div class="bg-purple-600 h-2 rounded-full" style="width: ${((currentQuestionIndex + 1) / chakraTestQuestions.length) * 100}%"></div>
+    if (currentQuestionEl && questionTextEl && answerOptionsEl) {
+        // English version structure
+        if (currentQuestionIndex < chakraTestQuestions.length) {
+            const question = chakraTestQuestions[currentQuestionIndex];
+            
+            // Update progress
+            currentQuestionEl.textContent = currentQuestionIndex + 1;
+            const progressPercent = Math.round((currentQuestionIndex + 1) / chakraTestQuestions.length * 100);
+            progressPercentEl.textContent = progressPercent + '%';
+            progressBarEl.style.width = progressPercent + '%';
+            
+            // Update question
+            questionTextEl.textContent = question.question;
+            
+            // Update options
+            answerOptionsEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left p-4 rounded-lg border-2 border-gray-200 dark:border-dark-border hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition text-gray-700 dark:text-dark-text';
+                button.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-dark-border mr-4 flex items-center justify-center">
+                            <span class="text-sm">${String.fromCharCode(65 + index)}</span>
+                        </span>
+                        <span>${option}</span>
+                    </div>
+                `;
+                button.onclick = () => selectAnswer(index);
+                answerOptionsEl.appendChild(button);
+            });
+        }
+    } else {
+        // Try Spanish version structure
+        const testContent = document.getElementById('testContent');
+        if (testContent && currentQuestionIndex < chakraTestQuestions.length) {
+            const question = chakraTestQuestions[currentQuestionIndex];
+            testContent.innerHTML = `
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-500">Question ${currentQuestionIndex + 1} of ${chakraTestQuestions.length}</span>
+                        <div class="w-32 bg-gray-200 rounded-full h-2">
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: ${((currentQuestionIndex + 1) / chakraTestQuestions.length) * 100}%"></div>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">${question.question}</h4>
+                    <div class="space-y-3">
+                        ${question.options.map((option, index) => `
+                            <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-purple-50 transition">
+                                <input type="radio" name="answer" value="${index}" class="mr-3 text-purple-600">
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
                     </div>
                 </div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-4">${question.question}</h4>
-                <div class="space-y-3">
-                    ${question.options.map((option, index) => `
-                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-purple-50 transition">
-                            <input type="radio" name="answer" value="${index}" class="mr-3 text-purple-600">
-                            <span>${option}</span>
-                        </label>
-                    `).join('')}
+                <div class="flex justify-end">
+                    <button onclick="nextTestQuestion()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+                        ${currentQuestionIndex === chakraTestQuestions.length - 1 ? 'Get Results' : 'Next'}
+                    </button>
                 </div>
-            </div>
-            <div class="flex justify-end">
-                <button onclick="nextTestQuestion()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
-                    ${currentQuestionIndex === chakraTestQuestions.length - 1 ? 'Get Results' : 'Next'}
-                </button>
-            </div>
-        `;
-    } else {
-        showTestResults();
+            `;
+        }
     }
+}
+
+function scrollToChakraCard(chakraKey) {
+    const targetCard = document.getElementById('chakra-card-' + chakraKey);
+    if (targetCard) {
+        // Smooth scroll to the chakra card
+        targetCard.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+        
+        // Add a temporary highlight effect
+        targetCard.style.transform = 'scale(1.02)';
+        targetCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+        targetCard.style.transition = 'all 0.3s ease';
+        
+        // Remove the highlight effect after 2 seconds
+        setTimeout(() => {
+            targetCard.style.transform = '';
+            targetCard.style.boxShadow = '';
+        }, 2000);
+    }
+}
+
+function selectAnswer(answerIndex) {
+    testAnswers[currentQuestionIndex] = answerIndex;
+    
+    // Highlight selected answer
+    const buttons = document.querySelectorAll('#answerOptions button');
+    buttons.forEach((button, index) => {
+        if (index === answerIndex) {
+            button.classList.add('border-purple-600', 'bg-purple-50', 'dark:bg-purple-900/20');
+        } else {
+            button.classList.remove('border-purple-600', 'bg-purple-50', 'dark:bg-purple-900/20');
+        }
+    });
+    
+    // Auto-advance to next question after a short delay
+    setTimeout(() => {
+        if (currentQuestionIndex < chakraTestQuestions.length - 1) {
+            currentQuestionIndex++;
+            showTestQuestion();
+        } else {
+            showTestResults();
+        }
+    }, 300);
 }
 
 function nextTestQuestion() {

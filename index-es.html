@@ -234,124 +234,76 @@
                 </p>
             </div>
 
-            <!-- Interactive Body Map -->
+            <!-- Interactive Chakra Column -->
             <div class="mb-16 reveal">
                 <div class="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8 glass">
-                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8">Mapa Interactivo del Cuerpo Chakra</h3>
-                    <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Pasa el cursor o haz clic en los puntos chakra para explorar cada centro de energía</p>
+                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-dark-text mb-8">Centros de Energía Chakra</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Haz clic en cada chakra para explorar su energía y propiedades</p>
                     
-                    <!-- Desktop Layout -->
-                    <div class="hidden md:flex justify-center items-center gap-12">
-                        <div class="relative">
-                            <svg width="280" height="600" viewBox="0 0 280 600" class="w-full h-auto max-w-md">
-                                <!-- Ghost Silhouette - Medical/Artistic Outline -->
-                                <g id="bodySilhouette" fill="none" stroke="#e5e7eb" stroke-width="1.5" opacity="0.1">
-                                    <!-- Head with refined shape -->
-                                    <ellipse cx="140" cy="70" rx="32" ry="38"/>
-                                    <!-- Jaw line -->
-                                    <path d="M 108 85 Q 140 95 172 85"/>
-                                    <!-- Neck -->
-                                    <path d="M 130 95 L 130 110 M 150 95 L 150 110"/>
-                                    <!-- Shoulders and collarbones -->
-                                    <path d="M 90 115 Q 140 105 190 115"/>
-                                    <!-- Arms with natural curves -->
-                                    <path d="M 95 120 Q 85 180 90 250 Q 92 280 95 320"/>
-                                    <path d="M 185 120 Q 195 180 190 250 Q 188 280 185 320"/>
-                                    <!-- Hands -->
-                                    <ellipse cx="92" cy="330" rx="12" ry="18"/>
-                                    <ellipse cx="188" cy="330" rx="12" ry="18"/>
-                                    <!-- Torso with natural curves -->
-                                    <path d="M 110 115 Q 95 200 110 290 Q 115 310 125 320"/>
-                                    <path d="M 170 115 Q 185 200 170 290 Q 165 310 155 320"/>
-                                    <!-- Hips -->
-                                    <path d="M 125 320 Q 140 315 155 320"/>
-                                    <!-- Legs -->
-                                    <path d="M 120 325 Q 115 400 118 480 Q 120 520 125 560"/>
-                                    <path d="M 160 325 Q 165 400 162 480 Q 160 520 155 560"/>
-                                    <!-- Feet -->
-                                    <ellipse cx="123" cy="570" rx="15" ry="8"/>
-                                    <ellipse cx="157" cy="570" rx="15" ry="8"/>
-                                </g>
-                                
-                                <!-- Sushumna Line - Central Energy Channel -->
-                                <line x1="140" y1="30" x2="140" y2="340" stroke="url(#sushumnaGradient)" stroke-width="3" opacity="0.6" id="sushumnaLine"/>
-                                
-                                <!-- Visual Chakra Points (15px - Beautiful) -->
-                                <g id="chakraPoints">
-                                    <!-- Crown Chakra -->
-                                    <circle cx="140" cy="30" r="8" fill="#8B00FF" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 12px rgba(139, 0, 255, 0.8));">
-                                        <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="3s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Third Eye Chakra -->
-                                    <circle cx="140" cy="70" r="7" fill="#4B0082" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 10px rgba(75, 0, 130, 0.8));">
-                                        <animate attributeName="r" values="7;9;7" dur="3.5s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="3.5s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Throat Chakra -->
-                                    <circle cx="140" cy="110" r="7" fill="#0000FF" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.8));">
-                                        <animate attributeName="r" values="7;9;7" dur="4s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="4s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Heart Chakra -->
-                                    <circle cx="140" cy="170" r="8" fill="#00FF00" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 12px rgba(0, 255, 0, 0.8));">
-                                        <animate attributeName="r" values="8;10;8" dur="2.5s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.5s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Solar Plexus Chakra -->
-                                    <circle cx="140" cy="220" r="7.5" fill="#FFD700" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 11px rgba(255, 215, 0, 0.8));">
-                                        <animate attributeName="r" values="7.5;9.5;7.5" dur="2.8s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.8s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Sacral Chakra -->
-                                    <circle cx="140" cy="270" r="7.5" fill="#FF8C00" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 11px rgba(255, 140, 0, 0.8));">
-                                        <animate attributeName="r" values="7.5;9.5;7.5" dur="3.2s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="3.2s" repeatCount="indefinite"/>
-                                    </circle>
-                                    
-                                    <!-- Root Chakra -->
-                                    <circle cx="140" cy="320" r="8" fill="#FF0000" opacity="0.9" class="chakra-visual" style="filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));">
-                                        <animate attributeName="r" values="8;10;8" dur="2.2s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.2s" repeatCount="indefinite"/>
-                                    </circle>
-                                </g>
-                                
-                                <!-- Invisible Hitboxes (48px - Functional) -->
-                                <g id="chakraHitboxes">
-                                    <circle cx="140" cy="30" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="crown"/>
-                                    <circle cx="140" cy="70" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="third-eye"/>
-                                    <circle cx="140" cy="110" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="throat"/>
-                                    <circle cx="140" cy="170" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="heart"/>
-                                    <circle cx="140" cy="220" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="solar"/>
-                                    <circle cx="140" cy="270" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="sacral"/>
-                                    <circle cx="140" cy="320" r="24" fill="transparent" class="chakra-hitbox cursor-pointer" data-chakra="root"/>
-                                </g>
-                                
-                                <!-- Gradient Definitions -->
-                                <defs>
-                                    <linearGradient id="sushumnaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#8B00FF;stop-opacity:0.8" />
-                                        <stop offset="16.66%" style="stop-color:#4B0082;stop-opacity:0.8" />
-                                        <stop offset="33.33%" style="stop-color:#0000FF;stop-opacity:0.8" />
-                                        <stop offset="50%" style="stop-color:#00FF00;stop-opacity:0.8" />
-                                        <stop offset="66.66%" style="stop-color:#FFD700;stop-opacity:0.8" />
-                                        <stop offset="83.33%" style="stop-color:#FF8C00;stop-opacity:0.8" />
-                                        <stop offset="100%" style="stop-color:#FF0000;stop-opacity:0.8" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
+                    <!-- Chakra Column Layout -->
+                    <div class="flex justify-center items-center gap-8">
+                        <div class="flex flex-col items-center space-y-6">
+                            <!-- Crown Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="crown" onclick="scrollToChakraCard('crown')">
+                                <div class="w-16 h-16 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #8B00FF, #DA70D6);">
+                                    <span>✦</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Corona</p>
+                            </div>
+                            
+                            <!-- Third Eye Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="third-eye" onclick="scrollToChakraCard('third-eye')">
+                                <div class="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #4B0082, #8A2BE2);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Tercer Ojo</p>
+                            </div>
+                            
+                            <!-- Throat Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="throat" onclick="scrollToChakraCard('throat')">
+                                <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #0000FF, #4169E1);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">हं</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Garganta</p>
+                            </div>
+                            
+                            <!-- Heart Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="heart" onclick="scrollToChakraCard('heart')">
+                                <div class="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #00FF00, #90EE90);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">यं</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Corazón</p>
+                            </div>
+                            
+                            <!-- Solar Plexus Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="solar" onclick="scrollToChakraCard('solar')">
+                                <div class="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FFD700, #FFED4E);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">रं</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Plexo Solar</p>
+                            </div>
+                            
+                            <!-- Sacral Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="sacral" onclick="scrollToChakraCard('sacral')">
+                                <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF8C00, #FFA500);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">वं</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Sacro</p>
+                            </div>
+                            
+                            <!-- Root Chakra -->
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="root" onclick="scrollToChakraCard('root')">
+                                <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF0000, #FF6B6B);">
+                                    <span style="font-family: 'Noto Sans Devanagari', sans-serif;">लं</span>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-600 dark:text-gray-300">Raíz</p>
+                            </div>
                         </div>
                         
                         <!-- Chakra Info Display -->
                         <div id="chakraInfo" class="hidden max-w-sm">
                             <div class="p-6 bg-gray-50 dark:bg-dark-border rounded-lg glass">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h4 id="chakraName" class="text-xl font-bold text-gray-800 dark:text-dark-text"></h4>
+                                <div class="flex items-center mb-4">
                                     <div id="chakraSymbol" class="text-4xl font-bold" style="font-family: 'Noto Sans Devanagari', sans-serif;"></div>
                                 </div>
                                 <p id="chakraDescription" class="text-gray-600 dark:text-gray-300 mb-4"></p>
@@ -361,42 +313,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Mobile Layout - Vertical Spine -->
-                    <div class="md:hidden">
-                        <div class="max-w-sm mx-auto">
-                            <!-- Mobile Chakra Buttons -->
-                            <div class="space-y-4" id="mobileChakraButtons">
-                                <button class="chakra-mobile-btn w-full p-4 rounded-lg glass flex items-center justify-between hover:scale-105 transition-transform" data-chakra="crown">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center mr-4">
-                                            <span class="text-2xl font-bold text-purple-600" style="font-family: 'Noto Sans Devanagari', sans-serif;">AUM</span>
-                                        </div>
-                                        <div class="text-left">
-                                            <h4 class="font-semibold text-gray-800 dark:text-dark-text">Chakra Corona</h4>
-                                            <p class="text-sm text-gray-600 dark:text-gray-300">Sahasrara</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-400"></i>
-                                </button>
-                                
-                                <button class="chakra-mobile-btn w-full p-4 rounded-lg glass flex items-center justify-between hover:scale-105 transition-transform" data-chakra="third-eye">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 rounded-full bg-indigo-600/20 flex items-center justify-center mr-4">
-                                            <span class="text-2xl font-bold text-indigo-600" style="font-family: 'Noto Sans Devanagari', sans-serif;">OM</span>
-                                        </div>
-                                        <div class="text-left">
-                                            <h4 class="font-semibold text-gray-800 dark:text-dark-text">Tercer Ojo</h4>
-                                            <p class="text-sm text-gray-600 dark:text-gray-300">Ajna</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-400"></i>
-                                </button>
-                                
-                                <button class="chakra-mobile-btn w-full p-4 rounded-lg glass flex items-center justify-between hover:scale-105 transition-transform" data-chakra="throat">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center mr-4">
-                                            <span class="text-2xl font-bold text-blue-600" style="font-family: 'Noto Sans Devanagari', sans-serif;">HAM</span>
                                         </div>
                                         <div class="text-left">
                                             <h4 class="font-semibold text-gray-800 dark:text-dark-text">Chakra Garganta</h4>
@@ -476,7 +392,7 @@
 
             <div class="space-y-12">
                 <!-- Root Chakra -->
-                <div class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-root" class="chakra-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -519,7 +435,7 @@
                 </div>
 
                 <!-- Sacral Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-sacral" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -562,7 +478,7 @@
                 </div>
 
                 <!-- Solar Plexus Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-solar" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -605,7 +521,7 @@
                 </div>
 
                 <!-- Heart Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-heart" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -648,7 +564,7 @@
                 </div>
 
                 <!-- Throat Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-throat" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -691,7 +607,7 @@
                 </div>
 
                 <!-- Third Eye Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-third-eye" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -734,7 +650,7 @@
                 </div>
 
                 <!-- Crown Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
+                <div id="chakra-card-crown" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden">
                     <div class="md:flex">
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -3522,6 +3438,33 @@
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('hidden');
+            }
+        }
+        
+        // Fallback scrollToChakraCard function in case script.js doesn't load properly
+        function scrollToChakraCard(chakraKey) {
+            console.log('scrollToChakraCard called with:', chakraKey);
+            const targetCard = document.getElementById('chakra-card-' + chakraKey);
+            console.log('Target card found:', targetCard);
+            if (targetCard) {
+                // Smooth scroll to the chakra card
+                targetCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Add a temporary highlight effect
+                targetCard.style.transform = 'scale(1.02)';
+                targetCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                targetCard.style.transition = 'all 0.3s ease';
+                
+                // Remove the highlight effect after 2 seconds
+                setTimeout(() => {
+                    targetCard.style.transform = '';
+                    targetCard.style.boxShadow = '';
+                }, 2000);
+            } else {
+                console.error('Chakra card not found for:', chakraKey);
             }
         }
     </script>

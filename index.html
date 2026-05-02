@@ -266,7 +266,7 @@
                     <div class="flex justify-center items-center gap-8">
                         <div class="flex flex-col items-center space-y-6">
                             <!-- Crown Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="crown" onclick="showChakraInfo('crown')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="crown" onclick="scrollToChakraCard('crown')">
                                 <div class="w-16 h-16 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #8B00FF, #DA70D6);">
                                     <span>✦</span>
                                 </div>
@@ -274,7 +274,7 @@
                             </div>
                             
                             <!-- Third Eye Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="third-eye" onclick="showChakraInfo('third-eye')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="third-eye" onclick="scrollToChakraCard('third-eye')">
                                 <div class="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #4B0082, #8A2BE2);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">ॐ</span>
                                 </div>
@@ -282,7 +282,7 @@
                             </div>
                             
                             <!-- Throat Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="throat" onclick="showChakraInfo('throat')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="throat" onclick="scrollToChakraCard('throat')">
                                 <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #0000FF, #4169E1);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">हं</span>
                                 </div>
@@ -290,7 +290,7 @@
                             </div>
                             
                             <!-- Heart Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="heart" onclick="showChakraInfo('heart')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="heart" onclick="scrollToChakraCard('heart')">
                                 <div class="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #00FF00, #90EE90);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">यं</span>
                                 </div>
@@ -298,7 +298,7 @@
                             </div>
                             
                             <!-- Solar Plexus Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="solar" onclick="showChakraInfo('solar')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="solar" onclick="scrollToChakraCard('solar')">
                                 <div class="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FFD700, #FFED4E);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">रं</span>
                                 </div>
@@ -306,7 +306,7 @@
                             </div>
                             
                             <!-- Sacral Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="sacral" onclick="showChakraInfo('sacral')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="sacral" onclick="scrollToChakraCard('sacral')">
                                 <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF8C00, #FFA500);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">वं</span>
                                 </div>
@@ -314,7 +314,7 @@
                             </div>
                             
                             <!-- Root Chakra -->
-                            <div class="chakra-column-item cursor-pointer group" data-chakra="root" onclick="showChakraInfo('root')">
+                            <div class="chakra-column-item cursor-pointer group" data-chakra="root" onclick="scrollToChakraCard('root')">
                                 <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg" style="background: linear-gradient(135deg, #FF0000, #FF6B6B);">
                                     <span style="font-family: 'Noto Sans Devanagari', sans-serif;">लं</span>
                                 </div>
@@ -341,7 +341,7 @@
 
             <div class="space-y-12">
                 <!-- Root Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-root" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="root-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -384,7 +384,7 @@
                 </div>
 
                 <!-- Sacral Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-sacral" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="sacral-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -427,7 +427,7 @@
                 </div>
 
                 <!-- Solar Plexus Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-solar" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="solar-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -470,7 +470,7 @@
                 </div>
 
                 <!-- Heart Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-heart" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="heart-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -513,7 +513,7 @@
                 </div>
 
                 <!-- Throat Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-throat" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="throat-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -556,7 +556,7 @@
                 </div>
 
                 <!-- Third Eye Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-third-eye" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="third-eye-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -599,7 +599,7 @@
                 </div>
 
                 <!-- Crown Chakra -->
-                <div class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
+                <div id="chakra-card-crown" class="chakra-card bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden reveal">
                     <div class="md:flex">
                         <div class="crown-bg md:w-1/3 p-8 flex items-center justify-center">
                             <div class="text-center text-white">
@@ -5728,6 +5728,33 @@
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('hidden');
+            }
+        }
+        
+        // Fallback scrollToChakraCard function in case script.js doesn't load properly
+        function scrollToChakraCard(chakraKey) {
+            console.log('scrollToChakraCard called with:', chakraKey);
+            const targetCard = document.getElementById('chakra-card-' + chakraKey);
+            console.log('Target card found:', targetCard);
+            if (targetCard) {
+                // Smooth scroll to the chakra card
+                targetCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Add a temporary highlight effect
+                targetCard.style.transform = 'scale(1.02)';
+                targetCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                targetCard.style.transition = 'all 0.3s ease';
+                
+                // Remove the highlight effect after 2 seconds
+                setTimeout(() => {
+                    targetCard.style.transform = '';
+                    targetCard.style.boxShadow = '';
+                }, 2000);
+            } else {
+                console.error('Chakra card not found for:', chakraKey);
             }
         }
     </script>
