@@ -113,34 +113,34 @@
     
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[90vw] xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="chakra-gradient w-8 h-8 rounded-full mr-3"></div>
                     <h1 class="heading-font text-xl font-bold text-gray-800 dark:text-dark-text">Chakra Encyclopedia</h1>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Home</a>
-                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">The 7 Chakras</a>
-                    <a href="#history" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">History</a>
-                    <a href="#science" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Science</a>
-                    <a href="#yoga" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Yoga</a>
-                    <a href="#foods" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Nutrition</a>
-                    <a href="#aromatherapy" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Aromatherapy</a>
-                    <a href="#sound-healing" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Sound</a>
-                    <a href="#color-psychology" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Psychology</a>
-                    <a href="#mudras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Mudras</a>
-                    <a href="#traditions" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Traditions</a>
-                    <a href="#journaling" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Journaling</a>
-                    <a href="#sacred-geometry" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Sacred Geometry</a>
-                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">Meditation</a>
-                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition">About</a>
-                    <a href="index-es.html" class="text-purple-600 hover:text-purple-700 transition font-semibold">Español</a>
-                    <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition ml-4">
-                        <i id="themeIcon" class="fas fa-moon text-xl"></i>
+                <div class="hidden lg:flex xl:space-x-8 lg:space-x-4 items-center">
+                    <a href="#home" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Home</a>
+                    <a href="#chakras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">The 7 Chakras</a>
+                    <a href="#history" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">History</a>
+                    <a href="#science" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Science</a>
+                    <a href="#yoga" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Yoga</a>
+                    <a href="#foods" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Nutrition</a>
+                    <a href="#aromatherapy" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Aromatherapy</a>
+                    <a href="#sound-healing" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Sound</a>
+                    <a href="#color-psychology" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Psychology</a>
+                    <a href="#mudras" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Mudras</a>
+                    <a href="#traditions" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Traditions</a>
+                    <a href="#journaling" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Journaling</a>
+                    <a href="#sacred-geometry" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Sacred Geometry</a>
+                    <a href="#meditation" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">Meditation</a>
+                    <a href="#about" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition text-sm xl:text-base">About</a>
+                    <a href="index-es.html" class="text-purple-600 hover:text-purple-700 transition font-semibold text-sm xl:text-base">Español</a>
+                    <button onclick="toggleDarkMode()" class="text-gray-700 dark:text-dark-text hover:text-purple-600 transition ml-2 xl:ml-4">
+                        <i id="themeIcon" class="fas fa-moon text-lg xl:text-xl"></i>
                     </button>
                 </div>
-                <button class="md:hidden" onclick="toggleMobileMenu()">
+                <button class="lg:hidden" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-gray-700"></i>
                 </button>
             </div>
@@ -148,8 +148,8 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white dark:bg-dark-card z-40 hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-4 text-xl">
+    <div id="mobileMenu" class="fixed inset-0 bg-white dark:bg-dark-card z-40 hidden overflow-y-auto">
+        <div class="flex flex-col items-center justify-center h-full space-y-3 text-lg">
             <a href="#home" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">Home</a>
             <a href="#chakras" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">The 7 Chakras</a>
             <a href="#history" onclick="toggleMobileMenu()" class="text-gray-700 dark:text-dark-text hover:text-purple-600">History</a>
@@ -175,11 +175,11 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 chakra-gradient opacity-10"></div>
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <h1 class="heading-font text-5xl md:text-7xl font-bold text-gray-800 dark:text-dark-text mb-6">
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-[85vw] xl:max-w-4xl mx-auto">
+            <h1 class="heading-font font-bold text-gray-800 dark:text-dark-text mb-6" style="font-size: clamp(2rem, 5vw, 3.5rem);">
                 Discover Your <span class="chakra-gradient bg-clip-text text-transparent">Energy Centers</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+            <p class="text-gray-600 dark:text-gray-300 mb-8" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">
                 Explore the ancient wisdom of the 7 chakras and unlock your spiritual potential
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -197,7 +197,7 @@
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section class="py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[90vw] xl:max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="heading-font text-4xl font-bold text-gray-800 dark:text-dark-text mb-6">What Are Chakras?</h2>
@@ -4726,51 +4726,6 @@
             const chakraSymbol = document.getElementById('chakraSymbol');
             const learnMoreBtn = document.getElementById('learnMoreBtn');
 
-            const chakraInfoData = {
-                crown: {
-                    name: 'Crown Chakra (Sahasrara)',
-                    description: 'Spiritual connection, enlightenment, and cosmic consciousness. Located at the top of the head.',
-                    symbol: '✦',
-                    color: '#8B00FF'
-                },
-                'third-eye': {
-                    name: 'Third Eye Chakra (Ajna)',
-                    description: 'Intuition, insight, and psychic abilities. Located between the eyebrows.',
-                    symbol: 'ॐ',
-                    color: '#4B0082'
-                },
-                throat: {
-                    name: 'Throat Chakra (Vishuddha)',
-                    description: 'Communication, expression, and truth. Located at the throat.',
-                    symbol: 'हं',
-                    color: '#0000FF'
-                },
-                heart: {
-                    name: 'Heart Chakra (Anahata)',
-                    description: 'Love, compassion, and emotional balance. Located at the center of the chest.',
-                    symbol: 'यं',
-                    color: '#00FF00'
-                },
-                solar: {
-                    name: 'Solar Plexus (Manipura)',
-                    description: 'Personal power, confidence, and transformation. Located in the upper abdomen.',
-                    symbol: 'रं',
-                    color: '#FFD700'
-                },
-                sacral: {
-                    name: 'Sacral Chakra (Svadhisthana)',
-                    description: 'Creativity, sexuality, and emotional well-being. Located below the navel.',
-                    symbol: 'वं',
-                    color: '#FF8C00'
-                },
-                root: {
-                    name: 'Root Chakra (Muladhara)',
-                    description: 'Grounding, stability, and survival instincts. Located at the base of the spine.',
-                    symbol: 'लं',
-                    color: '#FF0000'
-                }
-            };
-
             const data = chakraInfoData[chakraKey];
             if (data) {
                 // Show info
@@ -5767,5 +5722,14 @@
     </div>
 
     <script src="script.js" defer></script>
+    <script>
+        // Fallback mobile menu function in case script.js doesn't load properly
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
     </body>
 </html>
