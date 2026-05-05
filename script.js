@@ -1,5 +1,26 @@
 // Chakra Encyclopedia JavaScript
 
+// Security: HTML Sanitization to prevent XSS
+function sanitizeHTML(html) {
+    const temp = document.createElement('div');
+    temp.textContent = html;
+    return temp.innerHTML;
+}
+
+// Security: Safe HTML setter with sanitization
+function safeSetHTML(element, html) {
+    if (typeof html === 'string') {
+        // Basic sanitization - remove script tags and dangerous attributes
+        const sanitized = html
+            .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+            .replace(/on\w+="[^"]*"/gi, '')
+            .replace(/javascript:/gi, '');
+        element.innerHTML = sanitized;
+    } else {
+        element.textContent = html;
+    }
+}
+
 // Tailwind Configuration
 tailwind.config = {
     darkMode: 'class',
@@ -115,31 +136,118 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Touch event support for iOS Safari
-document.querySelectorAll('button[onclick]').forEach(button => {
-    button.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        const onclickAttr = this.getAttribute('onclick');
-        if (onclickAttr) {
-            eval(onclickAttr);
+// XSS Protection - Content sanitization function
+function sanitizeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// Safe HTML insertion function
+function safeSetHTML(element, html) {
+    if (!element) return;
+    
+    // For simple text content, use textContent
+    if (html.indexOf('<') === -1) {
+        element.textContent = html;
+        return;
+    }
+    
+    // For HTML content, create a temporary div to parse and sanitize
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    
+    // Remove script tags and dangerous attributes
+    const scripts = temp.querySelectorAll('script');
+    scripts.forEach(script => script.remove());
+    
+    const allElements = temp.querySelectorAll('*');
+    allElements.forEach(el => {
+        // Remove dangerous attributes but preserve safe onclick for buttons
+        el.removeAttribute('onload');
+        el.removeAttribute('onerror');
+        el.removeAttribute('onmouseover');
+        el.removeAttribute('onmouseout');
+        
+        // Only remove onclick if it's not a safe function we explicitly allow
+        const onclick = el.getAttribute('onclick');
+        if (onclick && !onclick.includes('startChakraTest()') && 
+            !onclick.includes('toggleMobileMenu()') && 
+            !onclick.includes('toggleDarkMode()') && 
+            !onclick.includes('scrollToChakraCard(') &&
+            !onclick.includes('closeMeditationModal()')) {
+            el.removeAttribute('onclick');
         }
     });
+    
+    element.innerHTML = temp.innerHTML;
+}
+
+// Touch event support for iOS Safari - Safe alternative to eval()
+function executeOnclick(onclickAttr) {
+    if (!onclickAttr) return;
+    
+    // Handle common onclick patterns safely
+    if (onclickAttr.includes('startChakraTest()')) {
+        startChakraTest();
+    } else if (onclickAttr.includes('toggleMobileMenu()')) {
+        toggleMobileMenu();
+    } else if (onclickAttr.includes('toggleDarkMode()')) {
+        toggleDarkMode();
+    } else if (onclickAttr.includes('scrollToChakraCard(')) {
+        // Extract chakra name from scrollToChakraCard('name')
+        const match = onclickAttr.match(/scrollToChakraCard\(['"]([^'"]+)['"]\)/);
+        if (match && match[1]) {
+            scrollToChakraCard(match[1]);
+        }
+    } else {
+        // Fallback for other functions - still safer than eval
+        console.warn('Unknown onclick pattern:', onclickAttr);
+    }
+}
+
+// Event delegation for touch events - fixes memory leak
+document.body.addEventListener('touchend', function(e) {
+    const button = e.target.closest('button[onclick]');
+    if (button) {
+        const onclickAttr = button.getAttribute('onclick');
+        if (onclickAttr) {
+            e.preventDefault();
+            executeOnclick(onclickAttr);
+        }
+    }
 });
 
-// Fallback event listener for startChakraTest
+// Consolidated DOMContentLoaded handler - prevents race conditions
 document.addEventListener('DOMContentLoaded', function() {
-    const beginButton = document.querySelector('button[onclick*="startChakraTest"]');
-    if (beginButton) {
-        beginButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            startChakraTest();
+    try {
+        // Begin assessment button uses onclick attribute - no additional listeners needed
+        
+        // Initialize chakra cards with reveal animations
+        const chakraCards = document.querySelectorAll('.chakra-card');
+        chakraCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
         
-        // iOS Safari touch support
-        beginButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            startChakraTest();
-        });
+        // Initialize mobile menu setup
+        setupMobileMenu();
+        
+        // Initialize scroll progress bar
+        initScrollProgress();
+        
+        // Log successful initialization
+        console.log('Chakra Encyclopedia loaded successfully');
+        
+        // Track page view
+        if (typeof trackEvent === 'function') {
+            trackEvent('page_view', 'engagement', 'home_page');
+        }
+        
+    } catch (error) {
+        console.error('Error setting up DOMContentLoaded listeners:', error);
     }
 });
 
@@ -281,7 +389,7 @@ function showTestQuestion() {
         const testContent = document.getElementById('testContent');
         if (testContent && currentQuestionIndex < chakraTestQuestions.length) {
             const question = chakraTestQuestions[currentQuestionIndex];
-            testContent.innerHTML = `
+            safeSetHTML(testContent, `
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-sm text-gray-500">Question ${currentQuestionIndex + 1} of ${chakraTestQuestions.length}</span>
@@ -289,22 +397,23 @@ function showTestQuestion() {
                             <div class="bg-purple-600 h-2 rounded-full" style="width: ${((currentQuestionIndex + 1) / chakraTestQuestions.length) * 100}%"></div>
                         </div>
                     </div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-4">${question.question}</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">${sanitizeHTML(question.question)}</h4>
                     <div class="space-y-3">
                         ${question.options.map((option, index) => `
                             <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-purple-50 transition">
-                                <input type="radio" name="answer" value="${index}" class="mr-3 text-purple-600">
-                                <span>${option}</span>
+                                <input type="radio" name="answer" value="${index}" class="mr-3">
+                                <span>${sanitizeHTML(option)}</span>
                             </label>
                         `).join('')}
                     </div>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="previousQuestion()" class="px-4 py-2 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition">Previous</button>
+                        <button onclick="nextQuestion()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+                            ${currentQuestionIndex === chakraTestQuestions.length - 1 ? 'Get Results' : 'Next'}
+                        </button>
+                    </div>
                 </div>
-                <div class="flex justify-end">
-                    <button onclick="nextTestQuestion()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
-                        ${currentQuestionIndex === chakraTestQuestions.length - 1 ? 'Get Results' : 'Next'}
-                    </button>
-                </div>
-            `;
+            `);  
         }
     }
 }
@@ -396,21 +505,21 @@ function showTestResults() {
         return { chakra, score, status, recommendation };
     });
     
-    testContent.innerHTML = `
+    safeSetHTML(testContent, `
         <div class="mb-6">
             <h4 class="text-xl font-semibold text-gray-800 mb-4">Your Chakra Assessment Results</h4>
             <div class="space-y-4">
                 ${results.map(result => `
                     <div class="border rounded-lg p-4">
                         <div class="flex justify-between items-center mb-2">
-                            <h5 class="font-semibold capitalize">${result.chakra} Chakra</h5>
+                            <h5 class="font-semibold capitalize">${sanitizeHTML(result.chakra)} Chakra</h5>
                             <span class="px-3 py-1 rounded-full text-sm ${
                                 result.status === "Needs Attention" ? "bg-red-100 text-red-700" :
                                 result.status === "Moderately Balanced" ? "bg-yellow-100 text-yellow-700" :
                                 "bg-green-100 text-green-700"
-                            }">${result.status}</span>
+                            }">${sanitizeHTML(result.status)}</span>
                         </div>
-                        <p class="text-gray-600 text-sm">${result.recommendation}</p>
+                        <p class="text-gray-600 text-sm">${sanitizeHTML(result.recommendation)}</p>
                     </div>
                 `).join('')}
             </div>
@@ -420,21 +529,21 @@ function showTestResults() {
             <div class="grid md:grid-cols-2 gap-3">
                 ${results.filter(r => r.score <= 2).map(result => `
                     <div class="bg-purple-50 p-3 rounded-lg">
-                        <span class="font-medium capitalize">${result.chakra} Chakra:</span>
-                        <p class="text-sm text-gray-600">Try ${result.chakra} meditation and related healing practices.</p>
+                        <span class="font-medium capitalize">${sanitizeHTML(result.chakra)} Chakra:</span>
+                        <p class="text-sm text-gray-600">Try ${sanitizeHTML(result.chakra)} meditation and related healing practices.</p>
                     </div>
                 `).join('')}
             </div>
         </div>
         <div class="flex justify-end mt-6 space-x-3">
-            <button onclick="startChakraTest()" class="border border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-50 transition">
+            <button id="beginAssessmentBtn" class="border border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-50 transition">
                 Retake Test
             </button>
             <button onclick="closeChakraTest()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
                 Close
             </button>
         </div>
-    `;
+    `);
 }
 
 // Intersection Observer for scroll animations
@@ -453,16 +562,6 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all chakra cards for animation
-document.addEventListener('DOMContentLoaded', () => {
-    const chakraCards = document.querySelectorAll('.chakra-card');
-    chakraCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-});
-
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -484,41 +583,131 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Meditation player functionality
-const meditationAudio = {
-    root: new Audio('audio/root-meditation.mp3'),
-    sacral: new Audio('audio/sacral-meditation.mp3'),
-    solar: new Audio('audio/solar-meditation.mp3'),
-    heart: new Audio('audio/heart-meditation.mp3'),
-    throat: new Audio('audio/throat-meditation.mp3'),
-    thirdEye: new Audio('audio/third-eye-meditation.mp3'),
-    crown: new Audio('audio/crown-meditation.mp3'),
-    full: new Audio('audio/full-chakra-meditation.mp3')
+// Audio Configuration
+const audioConfig = {
+    basePath: 'audio/',
+    files: {
+        root: 'root-meditation.mp3',
+        sacral: 'sacral-meditation.mp3',
+        solar: 'solar-meditation.mp3',
+        heart: 'heart-meditation.mp3',
+        throat: 'throat-meditation.mp3',
+        thirdEye: 'third-eye-meditation.mp3',
+        crown: 'crown-meditation.mp3',
+        full: 'full-chakra-meditation.mp3'
+    }
 };
+
+// Meditation player functionality
+// Meditation Audio with validation and error handling
+const meditationAudio = {};
+
+// Initialize audio objects with validation
+function initializeAudio() {
+    Object.keys(audioConfig.files).forEach(chakra => {
+        const audioPath = audioConfig.basePath + audioConfig.files[chakra];
+        try {
+            meditationAudio[chakra] = new Audio(audioPath);
+            meditationAudio[chakra].addEventListener('error', function() {
+                console.warn(`Audio file not found: ${audioPath}`);
+            });
+        } catch (error) {
+            console.error(`Failed to load audio for ${chakra}:`, error);
+        }
+    });
+}
+
+// Initialize audio on page load
+initializeAudio();
+
+// Add error handling to all audio objects
+Object.keys(meditationAudio).forEach(chakra => {
+    const audio = meditationAudio[chakra];
+    audio.addEventListener('error', function(e) {
+        console.error(`Audio file not found or failed to load for ${chakra}:`, e);
+        // Show user-friendly error message
+        if (typeof showError === 'function') {
+            showError(`Meditation audio for ${chakra} chakra is not available.`);
+        }
+    });
+    
+    audio.addEventListener('load', function() {
+        console.log(`Audio file loaded successfully for ${chakra}`);
+    });
+    
+    // Set preload to auto for better performance
+    audio.preload = 'auto';
+});
 
 let currentMeditation = null;
 let isPlaying = false;
 
 function playMeditation(chakra) {
-    // Stop current meditation if playing
-    if (currentMeditation && isPlaying) {
-        currentMeditation.pause();
-        currentMeditation.currentTime = 0;
-    }
-    
-    currentMeditation = meditationAudio[chakra];
-    if (currentMeditation) {
-        currentMeditation.play();
-        isPlaying = true;
+    try {
+        // Validate input
+        if (!chakra) {
+            console.error('playMeditation: No chakra provided');
+            return;
+        }
         
-        // Update UI to show playing state
-        updateMeditationUI(chakra, true);
+        // Stop current meditation if playing
+        if (currentMeditation && isPlaying) {
+            try {
+                currentMeditation.pause();
+                currentMeditation.currentTime = 0;
+            } catch (error) {
+                console.warn('Error stopping current meditation:', error);
+            }
+        }
         
-        // Handle when audio ends
-        currentMeditation.onended = () => {
-            isPlaying = false;
-            updateMeditationUI(chakra, false);
-        };
+        currentMeditation = meditationAudio[chakra];
+        if (currentMeditation) {
+            // Check if audio is loaded and playable
+            if (currentMeditation.readyState < 2) {
+                console.warn('Audio not loaded yet for chakra:', chakra);
+                // Try to load the audio
+                currentMeditation.load();
+            }
+            
+            const playPromise = currentMeditation.play();
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        isPlaying = true;
+                        updateMeditationUI(chakra, true);
+                        
+                        // Handle when audio ends
+                        currentMeditation.onended = () => {
+                            isPlaying = false;
+                            updateMeditationUI(chakra, false);
+                        };
+                        
+                        // Handle audio errors
+                        currentMeditation.onerror = (error) => {
+                            console.error('Audio playback error:', error);
+                            isPlaying = false;
+                            updateMeditationUI(chakra, false);
+                            // Show user-friendly error message
+                            alert('Unable to play meditation audio. Please check your connection and try again.');
+                        };
+                    })
+                    .catch(error => {
+                        console.error('Failed to play meditation audio:', error);
+                        isPlaying = false;
+                        updateMeditationUI(chakra, false);
+                        // Show user-friendly error message
+                        alert('Unable to play meditation audio. Please check your browser settings and try again.');
+                    });
+            }
+        } else {
+            console.error('No meditation audio found for chakra:', chakra);
+            alert('Meditation audio not available for this chakra.');
+        }
+    } catch (error) {
+        console.error('Unexpected error in playMeditation:', error);
+        isPlaying = false;
+        updateMeditationUI(chakra, false);
+        alert('An error occurred while trying to play meditation audio.');
     }
 }
 
@@ -528,16 +717,16 @@ function updateMeditationUI(chakra, playing) {
     buttons.forEach(btn => {
         if (btn.dataset.chakra === chakra) {
             if (playing) {
-                btn.innerHTML = '<i class="fas fa-pause mr-2"></i> Pause';
+                safeSetHTML(btn, '<i class="fas fa-pause mr-2"></i> Pause');
                 btn.classList.add('bg-red-600', 'hover:bg-red-700');
                 btn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
             } else {
-                btn.innerHTML = '<i class="fas fa-play mr-2"></i> Play';
+                safeSetHTML(btn, '<i class="fas fa-play mr-2"></i> Play');
                 btn.classList.remove('bg-red-600', 'hover:bg-red-700');
                 btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
             }
         } else {
-            btn.innerHTML = '<i class="fas fa-play mr-2"></i> Play';
+            safeSetHTML(btn, '<i class="fas fa-play mr-2"></i> Play');
             btn.classList.remove('bg-red-600', 'hover:bg-red-700');
             btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
         }
@@ -639,14 +828,8 @@ function printChakraInfo(chakra) {
     }
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize any components that need setup
-    console.log('Chakra Encyclopedia loaded successfully');
-    
-    // Track page view
-    trackEvent('page_view', 'engagement', 'home_page');
-});
+// Initialize on page load - functionality moved to consolidated DOMContentLoaded handler above
+// Note: All DOMContentLoaded listeners have been consolidated to prevent race conditions
 
 // Export functions for external use if needed
 window.ChakraEncyclopedia = {
@@ -779,7 +962,7 @@ function openMeditationModal(chakra) {
 
     const data = meditationData[chakra];
     if (data) {
-        content.innerHTML = `
+        safeSetHTML(content, `
             <div class="text-center">
                 <h3 class="text-2xl font-bold mb-4">${data.title}</h3>
                 <div class="space-y-4">
@@ -800,7 +983,7 @@ function openMeditationModal(chakra) {
                     Close
                 </button>
             </div>
-        `;
+        `); // Added closing parenthesis here
         modal.classList.remove('hidden');
     }
 }
@@ -884,7 +1067,7 @@ function updateFrequencyVisualizer(frequency, chakra) {
     const color = colors[chakra] || '#8b5cf6';
     
     // Create visual representation of the frequency
-    visualizer.innerHTML = `
+    safeSetHTML(visualizer, `
         <div class="w-full h-full flex items-center justify-center relative">
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="w-2 h-2 rounded-full animate-pulse" style="background-color: ${color}"></div>
@@ -895,12 +1078,12 @@ function updateFrequencyVisualizer(frequency, chakra) {
                 <div class="text-xs text-gray-500 mt-1">Playing...</div>
             </div>
         </div>
-    `;
+    `); // Added closing parenthesis here
     
     // Clear visualizer after sound stops
     setTimeout(() => {
         if (visualizer.innerHTML.includes('Playing...')) {
-            visualizer.innerHTML = '<span class="text-sm text-gray-500 dark:text-gray-400">Click a chakra to visualize its frequency</span>';
+            safeSetHTML(visualizer, '<span class="text-sm text-gray-500 dark:text-gray-400">Click a chakra to visualize its frequency</span>');
         }
     }, 3000);
 }

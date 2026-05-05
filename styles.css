@@ -302,7 +302,7 @@
     pointer-events: none;
     transition: opacity 0.3s;
     font-size: 14px;
-    z-index: 1000;
+    z-index: 100;
 }
 
 .tooltip::after {
@@ -494,7 +494,7 @@ body {
         #4B0082 71.43%, 
         #8B00FF 85.71%, 
         #8B00FF 100%);
-    z-index: 9999;
+    z-index: 1000;
     transition: width 0.3s ease;
     box-shadow: 0 2px 8px rgba(139, 0, 255, 0.4);
 }
@@ -668,7 +668,13 @@ body {
     touch-action: manipulation;
 }
 
-button[onclick*="startChakraTest"] {
+button#beginAssessmentBtn,
+button[onclick],
+button[role="button"],
+input[type="button"],
+input[type="submit"],
+a[onclick],
+a[role="button"] {
     min-height: 44px;
     min-width: 44px;
     -webkit-tap-highlight-color: transparent;
@@ -677,7 +683,13 @@ button[onclick*="startChakraTest"] {
 
 /* Additional iOS Safari compatibility */
 @media (hover: none) and (pointer: coarse) {
-    button[onclick*="startChakraTest"]:active {
+    button#beginAssessmentBtn:active,
+    button[onclick]:active,
+    button[role="button"]:active,
+    input[type="button"]:active,
+    input[type="submit"]:active,
+    a[onclick]:active,
+    a[role="button"]:active {
         transform: scale(0.95);
         transition: transform 0.1s ease;
     }

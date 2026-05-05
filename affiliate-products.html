@@ -55,7 +55,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-2xl font-bold text-gray-800">$24.99</span>
-                            <a href="https://amazon.com/dp/B08XYZ123" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                            <a href="#" data-product="rootChakraCrystal" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
                                 View on Amazon
                             </a>
                         </div>
@@ -306,5 +306,45 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Affiliate Product Configuration
+        const affiliateConfig = {
+            amazon: {
+                baseUrl: 'https://amazon.com/dp/',
+                products: {
+                    rootChakraCrystal: 'B08XYZ123',
+                    sacralChakraOil: 'B08XYZ456',
+                    solarPlexusMala: 'B08XYZ789',
+                    heartChakraBracelet: 'B08ABC123',
+                    throatChakraTea: 'B08ABC456',
+                    thirdEyeIncense: 'B08ABC789',
+                    crownChakraBook: 'B08BOOK123',
+                    chakraHealingGuide: 'B08BOOK456',
+                    meditationCushion: 'B08BOOK789',
+                    singingBowl: 'B08BOOK012'
+                }
+            }
+        };
+
+        // Function to generate Amazon URLs
+        function getAmazonUrl(productKey) {
+            const baseUrl = affiliateConfig.amazon.baseUrl;
+            const productId = affiliateConfig.amazon.products[productKey];
+            return productId ? `${baseUrl}${productId}` : '#';
+        }
+
+        // Update all affiliate links on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update product links
+            const productLinks = document.querySelectorAll('[data-product]');
+            productLinks.forEach(link => {
+                const productKey = link.getAttribute('data-product');
+                if (productKey) {
+                    link.href = getAmazonUrl(productKey);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
