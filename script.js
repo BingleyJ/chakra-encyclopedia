@@ -126,7 +126,18 @@ function toggleMobileMenu() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        
+        // Special handling for home link - scroll to very top
+        if (href === '#home') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+        
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -587,14 +598,14 @@ window.addEventListener('scroll', () => {
 const audioConfig = {
     basePath: 'audio/',
     files: {
-        root: 'root-meditation.mp3',
-        sacral: 'sacral-meditation.mp3',
-        solar: 'solar-meditation.mp3',
-        heart: 'heart-meditation.mp3',
-        throat: 'throat-meditation.mp3',
-        thirdEye: 'third-eye-meditation.mp3',
-        crown: 'crown-meditation.mp3',
-        full: 'full-chakra-meditation.mp3'
+        root: 'root-chakra.mp3',
+        sacral: 'sacral-chakra.mp3',
+        solar: 'solar-plexus.mp3',
+        heart: 'heart-chakra.mp3',
+        throat: 'throat-chakra.mp3',
+        'third-eye': 'third-eye.mp3',
+        crown: 'crown-chakra.mp3',
+        full: 'full-chakra.mp3'
     }
 };
 
@@ -641,16 +652,26 @@ Object.keys(meditationAudio).forEach(chakra => {
 
 let currentMeditation = null;
 let isPlaying = false;
+let currentChakraPlaying = null;
 
-function playMeditation(chakra) {
+function toggleMeditation(chakra) {
     try {
         // Validate input
         if (!chakra) {
-            console.error('playMeditation: No chakra provided');
+            console.error('toggleMeditation: No chakra provided');
             return;
         }
         
-        // Stop current meditation if playing
+        // If clicking the same chakra that's currently playing, pause it
+        if (currentMeditation && isPlaying && currentChakraPlaying === chakra) {
+            currentMeditation.pause();
+            isPlaying = false;
+            currentChakraPlaying = null;
+            updateMeditationUI(chakra, false);
+            return;
+        }
+        
+        // Stop current meditation if playing a different chakra
         if (currentMeditation && isPlaying) {
             try {
                 currentMeditation.pause();
@@ -661,6 +682,8 @@ function playMeditation(chakra) {
         }
         
         currentMeditation = meditationAudio[chakra];
+        currentChakraPlaying = chakra;
+        
         if (currentMeditation) {
             // Check if audio is loaded and playable
             if (currentMeditation.readyState < 2) {
@@ -679,6 +702,7 @@ function playMeditation(chakra) {
                         // Handle when audio ends
                         currentMeditation.onended = () => {
                             isPlaying = false;
+                            currentChakraPlaying = null;
                             updateMeditationUI(chakra, false);
                         };
                         
@@ -686,6 +710,7 @@ function playMeditation(chakra) {
                         currentMeditation.onerror = (error) => {
                             console.error('Audio playback error:', error);
                             isPlaying = false;
+                            currentChakraPlaying = null;
                             updateMeditationUI(chakra, false);
                             // Show user-friendly error message
                             alert('Unable to play meditation audio. Please check your connection and try again.');
@@ -694,6 +719,7 @@ function playMeditation(chakra) {
                     .catch(error => {
                         console.error('Failed to play meditation audio:', error);
                         isPlaying = false;
+                        currentChakraPlaying = null;
                         updateMeditationUI(chakra, false);
                         // Show user-friendly error message
                         alert('Unable to play meditation audio. Please check your browser settings and try again.');
@@ -704,11 +730,17 @@ function playMeditation(chakra) {
             alert('Meditation audio not available for this chakra.');
         }
     } catch (error) {
-        console.error('Unexpected error in playMeditation:', error);
+        console.error('Unexpected error in toggleMeditation:', error);
         isPlaying = false;
+        currentChakraPlaying = null;
         updateMeditationUI(chakra, false);
         alert('An error occurred while trying to play meditation audio.');
     }
+}
+
+// Keep playMeditation for backward compatibility
+function playMeditation(chakra) {
+    toggleMeditation(chakra);
 }
 
 function updateMeditationUI(chakra, playing) {
@@ -717,16 +749,38 @@ function updateMeditationUI(chakra, playing) {
     buttons.forEach(btn => {
         if (btn.dataset.chakra === chakra) {
             if (playing) {
-                safeSetHTML(btn, '<i class="fas fa-pause mr-2"></i> Pause');
+                safeSetHTML(btn, '<i class="fas fa-stop mr-2"></i> Stop');
                 btn.classList.add('bg-red-600', 'hover:bg-red-700');
                 btn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
             } else {
-                safeSetHTML(btn, '<i class="fas fa-play mr-2"></i> Play');
+                // Keep the original chakra name for non-playing buttons
+                const chakraNames = {
+                    root: 'Play Root Chakra Sound',
+                    sacral: 'Play Sacral Chakra Sound',
+                    solar: 'Play Solar Plexus Sound',
+                    heart: 'Play Heart Chakra Sound',
+                    throat: 'Play Throat Chakra Sound',
+                    'third-eye': 'Play Third Eye Sound',
+                    crown: 'Play Crown Chakra Sound'
+                };
+                const buttonText = chakraNames[btn.dataset.chakra] || '<i class="fas fa-play mr-2"></i> Play';
+                safeSetHTML(btn, buttonText);
                 btn.classList.remove('bg-red-600', 'hover:bg-red-700');
                 btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
             }
         } else {
-            safeSetHTML(btn, '<i class="fas fa-play mr-2"></i> Play');
+            // Keep the original chakra name for non-playing buttons
+            const chakraNames = {
+                root: 'Play Root Chakra Sound',
+                sacral: 'Play Sacral Chakra Sound',
+                solar: 'Play Solar Plexus Sound',
+                heart: 'Play Heart Chakra Sound',
+                throat: 'Play Throat Chakra Sound',
+                'third-eye': 'Play Third Eye Sound',
+                crown: 'Play Crown Chakra Sound'
+            };
+            const buttonText = chakraNames[btn.dataset.chakra] || '<i class="fas fa-play mr-2"></i> Play';
+            safeSetHTML(btn, buttonText);
             btn.classList.remove('bg-red-600', 'hover:bg-red-700');
             btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
         }
