@@ -637,6 +637,11 @@ body {
     touch-action: manipulation; /* Improve touch responsiveness */
 }
 
+/* Chakra column text alignment fix */
+.chakra-column-item p {
+    text-align: center;
+}
+
 .chakra-mobile-btn:active {
     transform: scale(0.98);
 }
