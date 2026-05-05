@@ -659,3 +659,26 @@ body {
         height: 100vh;
     }
 }
+
+/* iOS Safari Touch Target Support */
+.ios-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+button[onclick*="startChakraTest"] {
+    min-height: 44px;
+    min-width: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Additional iOS Safari compatibility */
+@media (hover: none) and (pointer: coarse) {
+    button[onclick*="startChakraTest"]:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}

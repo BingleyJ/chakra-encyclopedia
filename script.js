@@ -62,25 +62,6 @@ const urlLang = urlParams.get('lang');
 const initialLang = urlLang || savedLang || browserLang;
 setLanguage(initialLang);
 
-// Language detection and redirect
-(function() {
-    // Only redirect if coming from the root or no language preference is set
-    if (!window.location.pathname.includes('index-es.html')) {
-        var userLang = navigator.language || navigator.userLanguage;
-        var hasVisited = localStorage.getItem('chakra-lang-visited');
-        
-        // If first visit and user prefers Spanish, redirect to Spanish
-        if (!hasVisited && userLang.startsWith('es')) {
-            localStorage.setItem('chakra-lang-visited', 'true');
-            window.location.href = 'index-es.html';
-            return;
-        }
-        
-        // Mark as visited
-        localStorage.setItem('chakra-lang-visited', 'true');
-    }
-})();
-
 // Dark mode functionality
 function toggleDarkMode() {
     const html = document.documentElement;
@@ -134,6 +115,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Touch event support for iOS Safari
+document.querySelectorAll('button[onclick]').forEach(button => {
+    button.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        const onclickAttr = this.getAttribute('onclick');
+        if (onclickAttr) {
+            eval(onclickAttr);
+        }
+    });
+});
+
+// Fallback event listener for startChakraTest
+document.addEventListener('DOMContentLoaded', function() {
+    const beginButton = document.querySelector('button[onclick*="startChakraTest"]');
+    if (beginButton) {
+        beginButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            startChakraTest();
+        });
+        
+        // iOS Safari touch support
+        beginButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            startChakraTest();
+        });
+    }
+});
+
 // Chakra Test functionality
 const chakraTestQuestions = [
     {
@@ -177,27 +186,36 @@ let currentQuestionIndex = 0;
 let testAnswers = {};
 
 function startChakraTest() {
-    currentQuestionIndex = 0;
-    testAnswers = {};
-    
-    // Try to find English test elements first
-    const testStart = document.getElementById('testStart');
-    const testQuestions = document.getElementById('testQuestions');
-    
-    if (testStart && testQuestions) {
-        // English version structure
-        testStart.classList.add('hidden');
-        testQuestions.classList.remove('hidden');
-        showTestQuestion();
-    } else {
-        // Try Spanish version structure
+    try {
+        console.log('Chakra test started');
+        currentQuestionIndex = 0;
+        testAnswers = {};
+        
+        // Try to find English test elements first
+        const testStart = document.getElementById('testStart');
+        const testQuestions = document.getElementById('testQuestions');
+        
+        if (testStart && testQuestions) {
+            // English version structure
+            testStart.classList.add('hidden');
+            testQuestions.classList.remove('hidden');
+            showTestQuestion();
+        } else {
+            // Try Spanish version structure
         const chakraTestModal = document.getElementById('chakraTestModal');
         if (chakraTestModal) {
             chakraTestModal.classList.remove('hidden');
             showTestQuestion();
         }
     }
+    } catch (error) {
+        console.error('Error starting chakra test:', error);
+        alert('Unable to start test. Please refresh the page and try again.');
+    }
 }
+
+// Make sure it's available globally
+window.startChakraTest = startChakraTest;
 
 function closeChakraTest() {
     // Try to find English test elements first
@@ -953,8 +971,3 @@ function togglePrintMode() {
         }, 1000);
     }
 }
-    playMeditation,
-    shareOnSocial,
-    searchChakras,
-    printChakraInfo
-};
